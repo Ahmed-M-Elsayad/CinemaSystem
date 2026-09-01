@@ -1,0 +1,77 @@
+#ifndef CINEMA_DATA_H
+#define CINEMA_DATA_H //للحماية علشان Compiler يقرا الملف ده مره واحده حتى لو تم الاستدعاء اكتر من مره. 
+#include <string>
+#include <vector>
+using namespace std;
+
+// 1. هيكل التاريخ
+struct Date {
+    int day;
+    int month;
+    int year;
+};
+
+// 2. هيكل الصالة
+struct Hall {
+    int hallId;
+    string name;
+    int rows;
+    int cols;
+    bool isVip;
+};
+
+// 3. هيكل الفيلم (قلب المشروع)
+struct Movie {
+    int movieId;
+    string name;
+    string genre;
+    string showtime;
+    double price;
+    int hallId;
+    string status;  // "Now Showing", "Coming Soon", "Ended"
+    vector<vector<char>> seats;  // 'O' = فاضي, 'X' = محجوز
+};
+
+// 4. هيكل العميل
+struct Customer {
+    int customerId;
+    string fullName;
+    string phone;
+};
+
+// 5. هيكل الحجز
+struct Booking {
+    int bookingId;
+    int movieId;
+    string movieName;
+    Customer customer;
+    vector<pair<int, int>> seats;
+    int seatCount;
+    double pricePerSeat;
+    double originalPrice;
+    double discountAmount;
+    double totalPrice;
+    Date bookingDate;
+    bool isActive;   // true = نشط, false = ملغي
+    bool isPaid;     // true = مدفوع, false = غير مدفوع
+
+    Booking() : isActive(true), isPaid(false),
+        discountAmount(0), seatCount(0) {
+    }
+};
+
+// 6. الثوابت العامة
+const string ADMIN_PASSWORD = "admin123";
+const int ROWS_DEFAULT = 5;
+const int COLS_DEFAULT = 6;
+const int DISCOUNT_THRESHOLD = 4;
+const double DISCOUNT_RATE = 0.10;
+const int STARTING_BOOKING_ID = 1001;
+
+// 7. المتغيرات العامة
+extern vector<Hall> halls;
+extern vector<Movie> movies;
+extern vector<Booking> bookings;
+extern int nextBookingId;
+
+#endif // النهاية المشكلة لو حصل خطأ
