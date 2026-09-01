@@ -26,10 +26,5 @@ CinemaSystem/
 ├── TASKS_LIST.md
 ├── FUNCTIONS_AGREEMENT.md
 └── FILE_FORMAT_AGREEMENT.md
-
-## الاجتماع القادم
-- التاريخ: [حدد التاريخ]
-- المدة: ساعة واحدة (Zoom)
-
 ## الترخيص
 هذا المشروع للأغراض التعليمية فقط. راجع ملف `LICENSE` للتفاصيل.
