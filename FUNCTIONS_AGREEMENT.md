@@ -73,5 +73,3 @@
 | Task 43 | `void (vector<Booking>&)` | `loadBookingsFromFile` | تحميل الحجوزات من `bookings.txt` |
 | Task 44 | `int ()` | `main` | نقطة بداية البرنامج (ثابتة) |
 | Task 45 | `void (vector<Hall>&, vector<Movie>&)` | `seedData` | إضافة بيانات وهمية للتجربة |
-
----
