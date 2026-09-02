@@ -5,7 +5,7 @@
 
 ---
 
-##  رضا (Reda): الصالات والمقاعد. 
+##  محمد (Mohammed): الصالات والمقاعد. 
 | Task number | Function name (suggested) | Signature (fixed) | Description |
 | :--- | :--- | :--- | :--- |
 | Task 1 | ________ | `void (vector<Hall>& halls)` | إضافة صالة جديدة |
@@ -22,7 +22,7 @@
 
 ---
 
-##  محمد (Mohamed): الأفلام + المساعدات.
+##  عمر (Omar): الأفلام + المساعدات.
 | Task number | Function name (suggested) | Signature (fixed) | Description |
 | :--- | :--- | :--- | :--- |
 | Task 11 | ________ | `void (vector<Movie>&, const vector<Hall>&)` | إضافة فيلم جديد |
@@ -40,7 +40,7 @@
 
 ---
 
-## عمر (Omar): الحجوزات.
+## رضا (Reda): الحجوزات.
 | Task number | Function name (suggested) | Signature (fixed) | Description |
 | :--- | :--- | :--- | :--- |
 | Task 21 | ________ | `double (double, int, double&)` | حساب السعر مع خصم 10% |
@@ -55,7 +55,7 @@
 
 ---
 
-## (أحمد): المدير، الملفات، التجميع.
+## أحمد (Ahmed M. Elsayad): المدير، الملفات، التجميع.
 | Task number | Function name (suggested) | Signature (fixed) | Description |
 | :--- | :--- | :--- | :--- |
 | Task 30 | `adminLogin` | `bool ()` | تسجيل دخول المدير |
