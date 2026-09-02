@@ -3,7 +3,7 @@
 
 ## (محمد): الصالات والمقاعد
 
-| رقم التاسك | التوقيع (ثابت) | الاسم المختار | وصف مختصر للدالة |
+| Task number | Signature (fixed) | Selected name | Brief function description |
 | :--- | :--- | :--- | :--- |
 | Task 1 | `void (vector<Hall>& halls)` | ________ | إضافة صالة جديدة |
 | Task 2 | `void (const vector<Hall>& halls)` | ________ | عرض جميع الصالات في جدول |
@@ -21,7 +21,7 @@
 
 ## (عمر): الأفلام + المساعدات
 
-| رقم التاسك | التوقيع (ثابت) | الاسم المختار | وصف مختصر للدالة |
+| Task number | Signature (fixed) | Selected name | Brief function description |
 | :--- | :--- | :--- | :--- |
 | Task 11 | `void (vector<Movie>&, const vector<Hall>&)` | ________ | إضافة فيلم جديد مع ربطه بصالة |
 | Task 12 | `void (const vector<Movie>&)` | ________ | عرض جميع الأفلام (حتى المنتهية) |
@@ -38,7 +38,8 @@
 ---
 
 ## (رضا): الحجوزات
-| رقم التاسك | التوقيع (ثابت) | الاسم المختار | وصف مختصر للدالة |
+
+| Task number | Signature (fixed) | Selected name | Brief function description |
 | :--- | :--- | :--- | :--- |
 | Task 21 | `double (double, int, double&)` | ________ | حساب السعر مع خصم 10% (لو > 4 تذاكر) |
 | Task 22 | `void (vector<Movie>&, vector<Booking>&)` | ________ | تنفيذ عملية الحجز الكاملة (الأهم) |
@@ -53,7 +54,8 @@
 ---
 
 ## (Ahmed M. Elsayad): المدير، الملفات، التجميع
-| رقم التاسك | التوقيع (ثابت) | الاسم المختار | وصف مختصر للدالة |
+
+| Task number | Signature (fixed) | Selected name | Brief function description |
 | :--- | :--- | :--- | :--- |
 | Task 30 | `bool ()` | `adminLogin` | التحقق من كلمة السر (3 محاولات) |
 | Task 31 | `void (vector<Movie>&, vector<Hall>&, vector<Booking>&)` | `showAdminMenu` | عرض قائمة المدير |
@@ -71,3 +73,5 @@
 | Task 43 | `void (vector<Booking>&)` | `loadBookingsFromFile` | تحميل الحجوزات من `bookings.txt` |
 | Task 44 | `int ()` | `main` | نقطة بداية البرنامج (ثابتة) |
 | Task 45 | `void (vector<Hall>&, vector<Movie>&)` | `seedData` | إضافة بيانات وهمية للتجربة |
+
+---
