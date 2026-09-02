@@ -87,7 +87,7 @@
 
 | Member | Number of Tasks | Task Numbers |
 | :--- | :--- | :--- |
-| **رضا (Reda)** | 10 | Task 1 → Task 10 |
-| **محمد (Mohamed)** | 10 | Task 11 → Task 20 |
-| **عمر (Omar)** | 9 | Task 21 → Task 29 |
+| **محمد (Mohammed)** | 10 | Task 1 → Task 10 |
+| **عمر (Omar)** | 10 | Task 11 → Task 20 |
+| **رضا (Reda)** | 9 | Task 21 → Task 29 |
 | **Ahmed M. Elsayad** | 16 | Task 30 → Task 45 |
