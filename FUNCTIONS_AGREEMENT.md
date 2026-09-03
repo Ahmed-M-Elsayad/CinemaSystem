@@ -23,17 +23,17 @@
 
 | Task number | Signature (fixed) | Selected name | Brief function description |
 | :--- | :--- | :--- | :--- |
-| Task 11 | `void (vector<Movie>&, const vector<Hall>&)` | ________ | إضافة فيلم جديد مع ربطه بصالة |
-| Task 12 | `void (const vector<Movie>&)` | ________ | عرض جميع الأفلام (حتى المنتهية) |
-| Task 13 | `void (const vector<Movie>&)` | ________ | عرض الأفلام النشطة فقط (Now Showing) |
-| Task 14 | `const Movie* (const vector<Movie>&, int)` | ________ | البحث عن فيلم برقمه (للقراءة فقط) |
-| Task 14 | `Movie* (vector<Movie>&, int)` | ________ | البحث عن فيلم برقمه (للتعديل) |
-| Task 15 | `void (vector<Movie>&, int, double)` | ________ | تغيير سعر تذكرة فيلم معين |
-| Task 16 | `void (vector<Movie>&, int, const string&)` | ________ | تغيير حالة الفيلم (Now/Coming/Ended) |
-| Task 17 | `bool (vector<Movie>&, int, const vector<Booking>&)` | ________ | حذف فيلم (إذا لم يكن عليه حجوزات) |
-| Task 18 | `void ()` | ________ | مسح محتويات شاشة الكونسول |
-| Task 19 | `void ()` | ________ | إيقاف البرنامج لحين الضغط على Enter |
-| Task 20 | `void (const string&)` | ________ | طباعة عنوان بتنسيق (===== العنوان =====) |
+| Task 11 | `void (vector<Movie>&, const vector<Hall>&)` | addNewMovie | إضافة فيلم جديد مع ربطه بصالة |
+| Task 12 | `void (const vector<Movie>&)` | displayAllMovies | عرض جميع الأفلام (حتى المنتهية) |
+| Task 13 | `void (const vector<Movie>&)` | displayActiveMovies | عرض الأفلام النشطة فقط (Now Showing) |
+| Task 14 | `const Movie* (const vector<Movie>&, int)` | findMovieById | البحث عن فيلم برقمه (للقراءة فقط) |
+| Task 14 | `Movie* (vector<Movie>&, int)` | findMovieById | البحث عن فيلم برقمه (للتعديل) |
+| Task 15 | `void (vector<Movie>&, int, double)` | updateMoviePrice | تغيير سعر تذكرة فيلم معين |
+| Task 16 | `void (vector<Movie>&, int, const string&)` | updateMovieStatus | تغيير حالة الفيلم (Now/Coming/Ended) |
+| Task 17 | `bool (vector<Movie>&, int, const vector<Booking>&)` | deleteMovie | حذف فيلم (إذا لم يكن عليه حجوزات) |
+| Task 18 | `void ()` | clearScreen | مسح محتويات شاشة الكونسول |
+| Task 19 | `void ()` | pressEnterToContinue | إيقاف البرنامج لحين الضغط على Enter |
+| Task 20 | `void (const string&)` | printHeader | طباعة عنوان بتنسيق (===== العنوان =====) |
 
 ---
 
