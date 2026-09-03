@@ -25,17 +25,17 @@
 ##  عمر (Omar): الأفلام + المساعدات.
 | Task number | Function name (suggested) | Signature (fixed) | Description |
 | :--- | :--- | :--- | :--- |
-| Task 11 | ________ | `void (vector<Movie>&, const vector<Hall>&)` | إضافة فيلم جديد |
-| Task 12 | ________ | `void (const vector<Movie>&)` | عرض جميع الأفلام |
-| Task 13 | ________ | `void (const vector<Movie>&)` | عرض الأفلام النشطة فقط |
-| Task 14 | ________ | `const Movie* (const vector<Movie>&, int)` | البحث عن فيلم (للقراءة) |
-| Task 14 | ________ | `Movie* (vector<Movie>&, int)` | البحث عن فيلم (للتعديل) |
-| Task 15 | ________ | `void (vector<Movie>&, int, double)` | تحديث سعر الفيلم |
-| Task 16 | ________ | `void (vector<Movie>&, int, const string&)` | تحديث حالة الفيلم |
-| Task 17 | ________ | `bool (vector<Movie>&, int, const vector<Booking>&)` | حذف فيلم |
-| Task 18 | ________ | `void ()` | مسح الشاشة |
-| Task 19 | ________ | `void ()` | الانتظار (Enter) |
-| Task 20 | ________ | `void (const string&)` | طباعة عنوان |
+| Task 11 | addNewMovie | `void (vector<Movie>&, const vector<Hall>&)` | إضافة فيلم جديد |
+| Task 12 | displayAllMovies | `void (const vector<Movie>&)` | عرض جميع الأفلام |
+| Task 13 | displayActiveMovies | `void (const vector<Movie>&)` | عرض الأفلام النشطة فقط |
+| Task 14 | findMovieById | `const Movie* (const vector<Movie>&, int)` | البحث عن فيلم (للقراءة) |
+| Task 14 | findMovieById | `Movie* (vector<Movie>&, int)` | البحث عن فيلم (للتعديل) |
+| Task 15 | updateMoviePrice | `void (vector<Movie>&, int, double)` | تحديث سعر الفيلم |
+| Task 16 | updateMovieStatus | `void (vector<Movie>&, int, const string&)` | تحديث حالة الفيلم |
+| Task 17 | deleteMovie | `bool (vector<Movie>&, int, const vector<Booking>&)` | حذف فيلم |
+| Task 18 | clearScreen | `void ()` | مسح الشاشة |
+| Task 19 | pressEnterToContinue | `void ()` | الانتظار (Enter) |
+| Task 20 | printHeader | `void (const string&)` | طباعة عنوان |
 
 
 ---
@@ -43,15 +43,15 @@
 ## رضا (Reda): الحجوزات.
 | Task number | Function name (suggested) | Signature (fixed) | Description |
 | :--- | :--- | :--- | :--- |
-| Task 21 | ________ | `double (double, int, double&)` | حساب السعر مع خصم 10% |
-| Task 22 | ________ | `void (vector<Movie>&, vector<Booking>&)` | الحجز الرئيسي (الأهم) |
-| Task 23 | ________ | `void (vector<Booking>&, vector<Movie>&)` | إلغاء حجز |
-| Task 24 | ________ | `void (vector<Booking>&, vector<Movie>&)` | تعديل حجز |
-| Task 25 | ________ | `void (const Booking&, const Movie&)` | طباعة التذكرة |
-| Task 26 | ________ | `void (const Booking&, const Movie&)` | تصدير التذكرة كملف |
-| Task 27 | ________ | `Booking* (vector<Booking>&, int)` | البحث عن حجز برقمه |
-| Task 28 | ________ | `int (int, int)` | إدخال رقم صحيح مع التحقق |
-| Task 29 | ________ | `string (const string&)` | إدخال نص |
+| Task 21 | calculateTotalPrice | `double (double, int, double&)` | حساب السعر مع خصم 10% |
+| Task 22 | createBooking | `void (vector<Movie>&, vector<Booking>&)` | الحجز الرئيسي (الأهم) |
+| Task 23 | cancelBooking | `void (vector<Booking>&, vector<Movie>&)` | إلغاء حجز |
+| Task 24 | modifyBooking | `void (vector<Booking>&, vector<Movie>&)` | تعديل حجز |
+| Task 25 | printTicket | `void (const Booking&, const Movie&)` | طباعة التذكرة |
+| Task 26 | exportTicketToFile | `void (const Booking&, const Movie&)` | تصدير التذكرة كملف |
+| Task 27 | findBookingById | `Booking* (vector<Booking>&, int)` | البحث عن حجز برقمه |
+| Task 28 | getIntInput | `int (int, int)` | إدخال رقم صحيح مع التحقق |
+| Task 29 | getStringInput | `string (const string&)` | إدخال نص |
 
 ---
 
