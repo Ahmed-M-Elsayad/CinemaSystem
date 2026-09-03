@@ -41,15 +41,15 @@
 
 | Task number | Signature (fixed) | Selected name | Brief function description |
 | :--- | :--- | :--- | :--- |
-| Task 21 | `double (double, int, double&)` | ________ | حساب السعر مع خصم 10% (لو > 4 تذاكر) |
-| Task 22 | `void (vector<Movie>&, vector<Booking>&)` | ________ | تنفيذ عملية الحجز الكاملة (الأهم) |
-| Task 23 | `void (vector<Booking>&, vector<Movie>&)` | ________ | إلغاء حجز (استرجاع المقاعد وتغيير الحالة) |
-| Task 24 | `void (vector<Booking>&, vector<Movie>&)` | ________ | تعديل حجز (إضافة/إزالة مقاعد وإعادة الحساب) |
-| Task 25 | `void (const Booking&, const Movie&)` | ________ | طباعة التذكرة على الشاشة بشكل منظم |
-| Task 26 | `void (const Booking&, const Movie&)` | ________ | تصدير التذكرة كملف (Ticket_[ID].txt) |
-| Task 27 | `Booking* (vector<Booking>&, int)` | ________ | البحث عن حجز برقمه |
-| Task 28 | `int (int, int)` | ________ | قراءة رقم مع التحقق من النطاق |
-| Task 29 | `string (const string&)` | ________ | قراءة سطر نصي كامل (بمسافات) |
+| Task 21 | `double (double, int, double&)` | calculateTotalPrice | حساب السعر مع خصم 10% (لو > 4 تذاكر) |
+| Task 22 | `void (vector<Movie>&, vector<Booking>&)` | createBooking | تنفيذ عملية الحجز الكاملة (الأهم) |
+| Task 23 | `void (vector<Booking>&, vector<Movie>&)` | cancelBooking | إلغاء حجز (استرجاع المقاعد وتغيير الحالة) |
+| Task 24 | `void (vector<Booking>&, vector<Movie>&)` | modifyBooking | تعديل حجز (إضافة/إزالة مقاعد وإعادة الحساب) |
+| Task 25 | `void (const Booking&, const Movie&)` | printTicket | طباعة التذكرة على الشاشة بشكل منظم |
+| Task 26 | `void (const Booking&, const Movie&)` | exportTicketToFile | تصدير التذكرة كملف (Ticket_[ID].txt) |
+| Task 27 | `Booking* (vector<Booking>&, int)` | findBookingById | البحث عن حجز برقمه |
+| Task 28 | `int (int, int)` | getIntInput | قراءة رقم مع التحقق من النطاق |
+| Task 29 | `string (const string&)` | getStringInput | قراءة سطر نصي كامل (بمسافات) |
 
 ---
 
