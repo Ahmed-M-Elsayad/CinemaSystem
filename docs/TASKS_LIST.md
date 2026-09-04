@@ -47,10 +47,10 @@
 ## أحمد (Ahmed M. Elsayad): المدير، الملفات، التجميع.
 | Task number | Function name (suggested) | Signature (fixed) | Description |
 | :--- | :--- | :--- | :--- |
-| Task 7 | ________ | `bool (vector<vector<char>>&, int, int)` | حجز مقعد |
-| Task 8 | ________ | `void (vector<vector<char>>&, int, int)` | إلغاء حجز مقعد |
-| Task 9 | ________ | `int (const vector<vector<char>>&)` | حساب عدد المقاعد الفاضية |
-| Task 10 | ________ | `bool (const vector<vector<char>>&, int, int)` | التحقق من صحة رقم المقعد |
+| Task 7 | bookSeat | `bool (vector<vector<char>>&, int, int)` | حجز مقعد |
+| Task 8 | unbookSeat | `void (vector<vector<char>>&, int, int)` | إلغاء حجز مقعد |
+| Task 9 | getAvailableSeatsCount | `int (const vector<vector<char>>&)` | حساب عدد المقاعد الفاضية |
+| Task 10 | isValidSeat | `bool (const vector<vector<char>>&, int, int)` | التحقق من صحة رقم المقعد |
 | Task 30 | `adminLogin` | `bool ()` | تسجيل دخول المدير |
 | Task 31 | `showAdminMenu` | `void (vector<Movie>&, vector<Hall>&, vector<Booking>&)` | عرض قائمة المدير |
 | Task 32 | `adminAddMovie` | `void (vector<Movie>&, const vector<Hall>&)` | إضافة فيلم (مدير) |
