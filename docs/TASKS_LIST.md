@@ -9,13 +9,13 @@
 | :--- | :--- | :--- | :--- |
 | Task 1 | addHall | void (vector<Hall>& halls) | إضافة صالة جديدة |
 | Task 2 | displayAllHalls | void (const vector<Hall>& halls) | عرض جميع الصالات |
-| Task 3 | findHallById | const Hall* (const vector<Hall>&, int) | البحث عن صالة (للقراءة) |
-| Task 3 | findHallById | Hall* (vector<Hall>&, int) | البحث عن صالة (للتعديل) |
+| Task 3 | findHallById | const Hall (const vector<Hall>&, int) | البحث عن صالة (للقراءة) |
+| Task 3 | findHallById | Hall (vector<Hall>&, int) | البحث عن صالة (للتعديل) |
 | Task 11 | addNewMovie | void (vector<Movie>&, const vector<Hall>&) | إضافة فيلم جديد |
 | Task 12 | displayAllMovies | void (const vector<Movie>&) | عرض جميع الأفلام |
 | Task 13 | displayActiveMovies | void (const vector<Movie>&) | عرض الأفلام النشطة فقط |
-| Task 14 | findMovieById | const Movie* (const vector<Movie>&, int) | البحث عن فيلم (للقراءة) |
-| Task 14 | findMovieById | Movie* (vector<Movie>&, int) | البحث عن فيلم (للتعديل) |
+| Task 14 | findMovieById | const Movie (const vector<Movie>&, int) | البحث عن فيلم (للقراءة) |
+| Task 14 | findMovieById | Movie (vector<Movie>&, int) | البحث عن فيلم (للتعديل) |
 | Task 15 | updateMoviePrice | void (vector<Movie>&, int, double) | تحديث سعر الفيلم |
 | Task 16 | updateMovieStatus | void (vector<Movie>&, int, const string&) | تحديث حالة الفيلم |
 | Task 17 | deleteMovie | bool (vector<Movie>&, int, const vector<Booking>&) | حذف فيلم |
@@ -38,7 +38,7 @@
 | Task 24 | modifyBooking | void (vector<Booking>&, vector<Movie>&) | تعديل حجز |
 | Task 25 | printTicket | void (const Booking&, const Movie&) | طباعة التذكرة |
 | Task 26 | exportTicketToFile | void (const Booking&, const Movie&) | تصدير التذكرة كملف |
-| Task 27 | findBookingById | Booking* (vector<Booking>&, int) | البحث عن حجز برقمه |
+| Task 27 | findBookingById | Booking (vector<Booking>&, int) | البحث عن حجز برقمه |
 | Task 28 | getIntInput | int (int, int) | إدخال رقم صحيح مع التحقق |
 | Task 29 | getStringInput | string (const string&) | إدخال نص |
 
