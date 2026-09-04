@@ -5,10 +5,10 @@
 
 | Task number | Signature (fixed) | Selected name | Brief function description |
 | :--- | :--- | :--- | :--- |
-| Task 1 | `void (vector<Hall>& halls)` | ________ | إضافة صالة جديدة |
-| Task 2 | `void (const vector<Hall>& halls)` | ________ | عرض جميع الصالات في جدول |
-| Task 3 | `const Hall* (const vector<Hall>&, int)` | ________ | البحث عن صالة برقمها (للقراءة فقط) |
-| Task 3 | `Hall* (vector<Hall>&, int)` | ________ | البحث عن صالة برقمها (للتعديل) |
+| Task 1 | `void (vector<Hall>& halls)` | addHall | إضافة صالة جديدة |
+| Task 2 | `void (const vector<Hall>& halls)` | displayAllHalls | عرض جميع الصالات في جدول |
+| Task 3 | `const Hall* (const vector<Hall>&, int)` | findHallById | البحث عن صالة برقمها (للقراءة فقط) |
+| Task 3 | `Hall* (vector<Hall>&, int)` | findHallById | البحث عن صالة برقمها (للتعديل) |
 | Task 11 | `void (vector<Movie>&, const vector<Hall>&)` | addNewMovie | إضافة فيلم جديد مع ربطه بصالة |
 | Task 12 | `void (const vector<Movie>&)` | displayAllMovies | عرض جميع الأفلام (حتى المنتهية) |
 | Task 13 | `void (const vector<Movie>&)` | displayActiveMovies | عرض الأفلام النشطة فقط (Now Showing) |
@@ -27,9 +27,9 @@
 
 | Task number | Signature (fixed) | Selected name | Brief function description |
 | :--- | :--- | :--- | :--- |
-| Task 4 | `vector<vector<char>> (int, int)` | ________ | إنشاء مصفوفة مقاعد جديدة (كلها O) |
-| Task 5 | `void (const vector<vector<char>>&)` | ________ | طباعة خريطة المقاعد بشكل منسق |
-| Task 6 | `bool (const vector<vector<char>>&, int, int)` | ________ | التحقق من توفر مقعد (O أم لا) |
+| Task 4 | `vector<vector<char>> (int, int)` | initializeSeats | إنشاء مصفوفة مقاعد جديدة (كلها O) |
+| Task 5 | `void (const vector<vector<char>>&)` | displaySeats | طباعة خريطة المقاعد بشكل منسق |
+| Task 6 | `bool (const vector<vector<char>>&, int, int)` | isSeatAvailable | التحقق من توفر مقعد (O أم لا) |
 | Task 21 | `double (double, int, double&)` | calculateTotalPrice | حساب السعر مع خصم 10% (لو > 4 تذاكر) |
 | Task 22 | `void (vector<Movie>&, vector<Booking>&)` | createBooking | تنفيذ عملية الحجز الكاملة (الأهم) |
 | Task 23 | `void (vector<Booking>&, vector<Movie>&)` | cancelBooking | إلغاء حجز (استرجاع المقاعد وتغيير الحالة) |
@@ -46,10 +46,10 @@
 
 | Task number | Signature (fixed) | Selected name | Brief function description |
 | :--- | :--- | :--- | :--- |
-| Task 7 | `bool (vector<vector<char>>&, int, int)` | bookSeat | حجز مقعد (تحويل O إلى X) |
-| Task 8 | `bool (vector<vector<char>>&, int, int)` | unbookSeat | إلغاء حجز مقعد (تحويل X إلى O) |
-| Task 9 | `int (const vector<vector<char>>&)` | getAvailableSeatsCount | حساب عدد المقاعد الفاضية |
-| Task 10 | `bool (const vector<vector<char>>&, int, int)` | isValidSeat | التحقق من صحة رقم المقعد (ضمن النطاق) |
+| Task 7 | `bool (vector<vector<char>>&, int, int)` | `bookSeat` | حجز مقعد (تحويل O إلى X) |
+| Task 8 | `bool (vector<vector<char>>&, int, int)` | `unbookSeat` | إلغاء حجز مقعد (تحويل X إلى O) |
+| Task 9 | `int (const vector<vector<char>>&)` | `getAvailableSeatsCount` | حساب عدد المقاعد الفاضية |
+| Task 10 | `bool (const vector<vector<char>>&, int, int)` | `isValidSeat` | التحقق من صحة رقم المقعد (ضمن النطاق) |
 | Task 30 | `bool ()` | `adminLogin` | التحقق من كلمة السر (3 محاولات) |
 | Task 31 | `void (vector<Movie>&, vector<Hall>&, vector<Booking>&)` | `showAdminMenu` | عرض قائمة المدير |
 | Task 32 | `void (vector<Movie>&, const vector<Hall>&)` | `adminAddMovie` | إضافة فيلم (بصلاحية المدير) |
