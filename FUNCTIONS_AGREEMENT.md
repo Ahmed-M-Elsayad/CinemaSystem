@@ -12,10 +12,10 @@
 | Task 4 | `vector<vector<char>> (int, int)` | ________ | إنشاء مصفوفة مقاعد جديدة (كلها O) |
 | Task 5 | `void (const vector<vector<char>>&)` | ________ | طباعة خريطة المقاعد بشكل منسق |
 | Task 6 | `bool (const vector<vector<char>>&, int, int)` | ________ | التحقق من توفر مقعد (O أم لا) |
-| Task 7 | `bool (vector<vector<char>>&, int, int)` | ________ | حجز مقعد (تحويل O إلى X) |
-| Task 8 | `void (vector<vector<char>>&, int, int)` | ________ | إلغاء حجز مقعد (تحويل X إلى O) |
-| Task 9 | `int (const vector<vector<char>>&)` | ________ | حساب عدد المقاعد الفاضية |
-| Task 10 | `bool (const vector<vector<char>>&, int, int)` | ________ | التحقق من صحة رقم المقعد (ضمن النطاق) |
+| Task 7 | `bool (vector<vector<char>>&, int, int)` | bookSeat | حجز مقعد (تحويل O إلى X) |
+| Task 8 | `void (vector<vector<char>>&, int, int)` | unbookSeat | إلغاء حجز مقعد (تحويل X إلى O) |
+| Task 9 | `int (const vector<vector<char>>&)` | getAvailableSeatsCount | حساب عدد المقاعد الفاضية |
+| Task 10 | `bool (const vector<vector<char>>&, int, int)` | isValidSeat | التحقق من صحة رقم المقعد (ضمن النطاق) |
 
 ---
 
