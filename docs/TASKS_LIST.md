@@ -1,30 +1,16 @@
 # 📋 قائمة التاسكات (Tasks) – مشروع السينما 🎬
 
 **إجمالي عدد التاسكات:** 45 تاسكاً  
-**توزيع التاسكات:** 4 مجوعات.
-
+**توزيع التاسكات:** 3 مجوعات.
 ---
 
-##  محمد (Mohammed): الصالات والمقاعد. 
+##  عمر (Omar): الأفلام + المساعدات.
 | Task number | Function name (suggested) | Signature (fixed) | Description |
 | :--- | :--- | :--- | :--- |
 | Task 1 | ________ | `void (vector<Hall>& halls)` | إضافة صالة جديدة |
 | Task 2 | ________ | `void (const vector<Hall>& halls)` | عرض جميع الصالات |
 | Task 3 | ________ | `const Hall* (const vector<Hall>&, int)` | البحث عن صالة (للقراءة) |
 | Task 3 | ________ | `Hall* (vector<Hall>&, int)` | البحث عن صالة (للتعديل) |
-| Task 4 | ________ | `vector<vector<char>> (int, int)` | تهيئة مصفوفة مقاعد جديدة |
-| Task 5 | ________ | `void (const vector<vector<char>>&)` | عرض خريطة المقاعد |
-| Task 6 | ________ | `bool (const vector<vector<char>>&, int, int)` | التحقق من توفر مقعد |
-| Task 7 | ________ | `bool (vector<vector<char>>&, int, int)` | حجز مقعد |
-| Task 8 | ________ | `void (vector<vector<char>>&, int, int)` | إلغاء حجز مقعد |
-| Task 9 | ________ | `int (const vector<vector<char>>&)` | حساب عدد المقاعد الفاضية |
-| Task 10 | ________ | `bool (const vector<vector<char>>&, int, int)` | التحقق من صحة رقم المقعد |
-
----
-
-##  عمر (Omar): الأفلام + المساعدات.
-| Task number | Function name (suggested) | Signature (fixed) | Description |
-| :--- | :--- | :--- | :--- |
 | Task 11 | addNewMovie | `void (vector<Movie>&, const vector<Hall>&)` | إضافة فيلم جديد |
 | Task 12 | displayAllMovies | `void (const vector<Movie>&)` | عرض جميع الأفلام |
 | Task 13 | displayActiveMovies | `void (const vector<Movie>&)` | عرض الأفلام النشطة فقط |
@@ -43,6 +29,9 @@
 ## رضا (Reda): الحجوزات.
 | Task number | Function name (suggested) | Signature (fixed) | Description |
 | :--- | :--- | :--- | :--- |
+| Task 4 | ________ | `vector<vector<char>> (int, int)` | تهيئة مصفوفة مقاعد جديدة |
+| Task 5 | ________ | `void (const vector<vector<char>>&)` | عرض خريطة المقاعد |
+| Task 6 | ________ | `bool (const vector<vector<char>>&, int, int)` | التحقق من توفر مقعد |
 | Task 21 | calculateTotalPrice | `double (double, int, double&)` | حساب السعر مع خصم 10% |
 | Task 22 | createBooking | `void (vector<Movie>&, vector<Booking>&)` | الحجز الرئيسي (الأهم) |
 | Task 23 | cancelBooking | `void (vector<Booking>&, vector<Movie>&)` | إلغاء حجز |
@@ -58,6 +47,10 @@
 ## أحمد (Ahmed M. Elsayad): المدير، الملفات، التجميع.
 | Task number | Function name (suggested) | Signature (fixed) | Description |
 | :--- | :--- | :--- | :--- |
+| Task 7 | ________ | `bool (vector<vector<char>>&, int, int)` | حجز مقعد |
+| Task 8 | ________ | `void (vector<vector<char>>&, int, int)` | إلغاء حجز مقعد |
+| Task 9 | ________ | `int (const vector<vector<char>>&)` | حساب عدد المقاعد الفاضية |
+| Task 10 | ________ | `bool (const vector<vector<char>>&, int, int)` | التحقق من صحة رقم المقعد |
 | Task 30 | `adminLogin` | `bool ()` | تسجيل دخول المدير |
 | Task 31 | `showAdminMenu` | `void (vector<Movie>&, vector<Hall>&, vector<Booking>&)` | عرض قائمة المدير |
 | Task 32 | `adminAddMovie` | `void (vector<Movie>&, const vector<Hall>&)` | إضافة فيلم (مدير) |
@@ -87,7 +80,6 @@
 
 | Member | Number of Tasks | Task Numbers |
 | :--- | :--- | :--- |
-| **محمد (Mohammed)** | 10 | Task 1 → Task 10 |
-| **عمر (Omar)** | 10 | Task 11 → Task 20 |
-| **رضا (Reda)** | 9 | Task 21 → Task 29 |
-| **Ahmed M. Elsayad** | 16 | Task 30 → Task 45 |
+| **عمر (Omar)** | 13 | Task 1 → Task 3 + Task 11 → Task 20 |
+| **رضا (Reda)** | 12 | Task 4 → Task 6 + Task 21 → Task 29 |
+| **Ahmed M. Elsayad** | 20 | Task 7 → Task 10 + Task 30 → Task 45 |
