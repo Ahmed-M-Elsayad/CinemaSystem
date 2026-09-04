@@ -48,7 +48,7 @@
 | Task number | Function name (suggested) | Signature (fixed) | Description |
 | :--- | :--- | :--- | :--- |
 | Task 7 | bookSeat | `bool (vector<vector<char>>&, int, int)` | حجز مقعد |
-| Task 8 | unbookSeat | `void (vector<vector<char>>&, int, int)` | إلغاء حجز مقعد |
+| Task 8 | `bool (vector<vector<char>>&, int, int)` | unbookSeat | إلغاء حجز مقعد (تحويل X إلى O) |
 | Task 9 | getAvailableSeatsCount | `int (const vector<vector<char>>&)` | حساب عدد المقاعد الفاضية |
 | Task 10 | isValidSeat | `bool (const vector<vector<char>>&, int, int)` | التحقق من صحة رقم المقعد |
 | Task 30 | `adminLogin` | `bool ()` | تسجيل دخول المدير |
