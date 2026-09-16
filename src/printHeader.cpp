@@ -1,5 +1,6 @@
 #include "printHeader.h"               // تضمين الهيدر
 #include <iostream>                     // تضمين للإخراج
+using namespace std;
 
 // تنفيذ دالة طباعة العنوان بتنسيق
 void printHeader(const string& title) {

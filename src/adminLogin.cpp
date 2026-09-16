@@ -1,4 +1,5 @@
 #include "adminLogin.h"
+#include "CinemaData.h"
 #include <iostream>
 
 using namespace std;

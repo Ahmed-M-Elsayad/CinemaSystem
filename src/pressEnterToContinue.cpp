@@ -1,6 +1,7 @@
 #include "pressEnterToContinue.h"                // تضمين الهيدر
 #include <iostream>                     // تضمين للإخراج
 #include <limits>                       // تضمين لتنظيف باف الإدخال
+using namespace std;
 
 // تنفيذ دالة انتظار الضغط على Enter
 void pressEnterToContinue() {
