@@ -4,6 +4,6 @@
 #include <vector>
 
 Booking* findBookingById(
-    vector<Booking>& bookings,
+    vector<Booking>& bookingList,
     int bookingId
 );
