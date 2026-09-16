@@ -4,6 +4,6 @@
 #include <vector>
 
 void createBooking(
-    vector<Movie>& movies, 
+    vector<Movie>& movieList, 
     vector<Booking>& bookings
 );
