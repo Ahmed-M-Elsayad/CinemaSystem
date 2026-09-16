@@ -1,4 +1,10 @@
 #include "showAdminMenu.h"
+#include "adminAddMovie.h"
+#include "adminEditMovie.h"
+#include "adminDeleteMovie.h"
+#include "showSalesReport.h"
+#include "saveAllData.h"
+#include "loadAllData.h"
 #include <iostream>
 
 using namespace std;
@@ -10,34 +16,34 @@ void showAdminMenu(vector<Movie>& movies,
 
     while (true) {
         cout << "\n========== ADMIN MENU ==========\n";
-        cout << "1. Add Movie (coming soon)\n";
-        cout << "2. Edit Movie (coming soon)\n";
-        cout << "3. Delete Movie (coming soon)\n";
-        cout << "4. Sales Report (coming soon)\n";
-        cout << "5. Save All Data (coming soon)\n";
-        cout << "6. Load All Data (coming soon)\n";
+        cout << "1. Add Movie\n";
+        cout << "2. Edit Movie\n";
+        cout << "3. Delete Movie\n";
+        cout << "4. Sales Report\n";
+        cout << "5. Save All Data\n";
+        cout << "6. Load All Data\n";
         cout << "7. Exit Admin Menu\n";
         cout << "Enter your choice: ";
         cin >> choice;
 
         switch (choice) {
         case 1:
-            cout << " Add Movie feature will be available soon.\n";
+            adminAddMovie(movies, halls);
             break;
         case 2:
-            cout << " Edit Movie feature will be available soon.\n";
+            adminEditMovie(movies);
             break;
         case 3:
-            cout << " Delete Movie feature will be available soon.\n";
+            adminDeleteMovie(movies, bookings);
             break;
         case 4:
-            cout << " Sales Report feature will be available soon.\n";
+            showSalesReport(movies, bookings);
             break;
         case 5:
-            cout << " Save All Data feature will be available soon.\n";
+            saveAllData(halls, movies, bookings);
             break;
         case 6:
-            cout << " Load All Data feature will be available soon.\n";
+            loadAllData(halls, movies, bookings);
             break;
         case 7:
             cout << " Exiting Admin Menu.\n";
