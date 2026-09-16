@@ -1,4 +1,4 @@
-#include "add_new_hall.h"           // تضمين إعلان الدالة
+#include "addNewHall.h"           // تضمين إعلان الدالة
 #include <iostream>                 // للإدخال والإخراج
 #include <limits>                   // لتنظيف باف الإدخال
 

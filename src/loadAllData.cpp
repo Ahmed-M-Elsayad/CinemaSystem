@@ -14,7 +14,7 @@ void loadAllData(vector<Hall>& halls, vector<Movie>& movies, vector<Booking>& bo
     bookings.clear();
 
     // 1. تحميل الصالات
-    ifstream hallsFile("halls");
+    ifstream hallsFile("data/halls.txt");
     if (hallsFile.is_open()) {
         string line;
         while (getline(hallsFile, line)) {
@@ -39,7 +39,7 @@ void loadAllData(vector<Hall>& halls, vector<Movie>& movies, vector<Booking>& bo
     }
 
     // 2. تحميل الأفلام (مع مصفوفة المقاعد)
-    ifstream moviesFile("movies");
+    ifstream moviesFile("data/movies.txt");
 	if (moviesFile.is_open()) { // فتح ملف الأفلام
         string line;
 		while (getline(moviesFile, line)) { // قراءة كل سطر من ملف الأفلام
@@ -84,7 +84,7 @@ void loadAllData(vector<Hall>& halls, vector<Movie>& movies, vector<Booking>& bo
     }
 
     // 3. تحميل الحجوزات (مع العميل والمقاعد والتاريخ)
-    ifstream bookingsFile("bookings");
+    ifstream bookingsFile("data/bookings.txt");
     if (bookingsFile.is_open()) {
         string line;
         while (getline(bookingsFile, line)) {

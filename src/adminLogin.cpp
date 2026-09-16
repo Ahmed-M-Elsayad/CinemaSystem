@@ -5,7 +5,7 @@ using namespace std;
 
 bool adminLogin() {
     string password;
-    const string correctPassword = "admin123";
+    const string correctPassword = ADMIN_PASSWORD;
     int attempts = 3;
 
     while (attempts > 0) {
