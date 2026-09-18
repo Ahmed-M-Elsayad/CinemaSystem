@@ -20,7 +20,12 @@
 
 كل ملفات البيانات تُحفظ في مجلد `data/`، **وتُنشأ تلقائياً** عند أول تشغيل للبرنامج.
 
-**ملاحظة:** المجلد ده **مستثنى جزئياً** من Git (فقط `bookings.txt`)، بينما `halls.txt` و `movies.txt` تُرفع كبيانات تجريبية (seed data).
+**الملفات:**
+- `halls.txt` — كل الصالات
+- `movies.txt` — كل الأفلام + المقاعد
+- `bookings.txt` — كل الحجوزات
+
+**ملاحظة:** `bookings.txt` **مستثنى** من Git (لأنه يتغير مع كل حجز)، بينما `halls.txt` و `movies.txt` تُرفع كبيانات تجريبية (seed data).
 
 ---
 
@@ -38,8 +43,10 @@
 - `isVip` (int 0/1) — هل VIP؟
 
 **مثال:**
+```
 1|Main Hall|5|6|0
 2|VIP Hall|4|5|1
+```
 
 **الدوال:** `saveHallsToFile` (38)، `loadHallsFromFile` (39).
 
@@ -61,6 +68,7 @@
 **المقاعد:** `O` = فاضي، `X` = محجوز.
 
 **مثال:**
+```
 1|Action Movie|Action|8:00 PM|100|1|Now Showing
 5|6
 XOOOOO
@@ -68,6 +76,7 @@ OOOOOO
 OOOOOO
 OOOOOO
 OOOOOO
+```
 
 **الدوال:** `saveMoviesToFile` (40)، `loadMoviesFromFile` (41).
 
@@ -88,11 +97,13 @@ OOOOOO
 **حقول العميل:** `customerId`, `customerName`, `phone`.
 
 **مثال:**
+```
 1001|1|Action Movie|2|100|200|0|200|1|1
 501|Ahmed Mohamed|01034168403
 0 0
 0 1
 3 9 2026
+```
 
 **الدوال:** `saveBookingsToFile` (42)، `loadBookingsFromFile` (43).
 
