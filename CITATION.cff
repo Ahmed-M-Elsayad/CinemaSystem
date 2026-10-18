@@ -1,0 +1,30 @@
+cff-version: 1.2.0
+message: "If you use this project in academic work, please cite it using the metadata below."
+title: "CinemaSystem: A C++ Console-Based Cinema Booking System"
+abstract: "A comprehensive cinema management and ticket booking system built with C++20, featuring separate customer and admin interfaces, seat reservation, and automated discounts."
+authors:
+  - family-names: "Elsayad"
+    given-names: "Ahmed M."
+    alias: "Ahmed-M-Elsayad"
+    affiliation: "CinemaSystem Team"
+  - family-names: "Elkplawy"
+    given-names: "Reda"
+    alias: "Redaelkplawy"
+    affiliation: "CinemaSystem Team"
+  - family-names: "Omar"
+    given-names: "Omar"
+    alias: "omaralqblawy"
+    affiliation: "CinemaSystem Team"
+version: 1.0.0
+date-released: "2026-10-18"
+license-url: "https://github.com/Ahmed-M-Elsayad/CinemaSystem/blob/main/LICENSE"
+repository-code: "https://github.com/Ahmed-M-Elsayad/CinemaSystem"
+type: software
+keywords:
+  - cpp
+  - cplusplus
+  - cinema
+  - booking-system
+  - console-app
+  - educational
+  - cpp20
