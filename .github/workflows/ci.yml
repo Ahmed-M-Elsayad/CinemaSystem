@@ -13,7 +13,8 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v4
+      # 1. تثبيت actions/checkout على SHA لحل مشكلة S7637
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
         with:
           fetch-depth: 0
 
@@ -26,15 +27,15 @@ jobs:
         run: |
           g++ -std=c++20 -Wall -Wextra -I include src/*.cpp -o cinema
 
+      # 2. استبدال الـ Action القديم وتثبيته على SHA لحل مشكلة S7637
       - name: SonarCloud Scan
-        uses: SonarSource/sonarcloud-github-action@master
+        uses: SonarSource/sonarqube-scan-action@f1b6db5b53921a0b9ed64919e7e55dfc764a9571 # v6.0.0
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
         with:
           args: >
             -Dsonar.projectKey=Ahmed-M-Elsayad_CinemaSystem
             -Dsonar.organization=ahmed-m-elsayad
-            -Dsonar.sources=src
+            -Dsonar.sources=src,include
             -Dsonar.sourceEncoding=UTF-8
             -Dsonar.exclusions=**/*.txt,**/*.md,**/docs/**,**/*.json
