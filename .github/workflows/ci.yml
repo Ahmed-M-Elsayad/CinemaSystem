@@ -14,12 +14,12 @@ jobs:
       BUILD_WRAPPER_OUT_DIR: build_wrapper_output_directory
     steps:
       - name: Checkout
-        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+        uses: actions/checkout@v4
         with:
           fetch-depth: 0   # required by SonarCloud for accurate blame info
 
-      - name: Install SonarCloud build-wrapper and scanner
-        uses: SonarSource/sonarcloud-github-c-cpp@v3
+      - name: Install Build Wrapper
+        uses: SonarSource/sonarqube-scan-action/install-build-wrapper@v4
 
       - name: Build with build-wrapper
         run: |
@@ -27,9 +27,13 @@ jobs:
             g++ -std=c++20 -Wall -Wextra -I include src/*.cpp -o cinema
 
       - name: Run SonarCloud analysis
+        uses: SonarSource/sonarqube-scan-action@v4
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-        run: |
-          sonar-scanner \
-            --define sonar.cfamily.compile-commands="${{ env.BUILD_WRAPPER_OUT_DIR }}/compile_commands.json"
+        with:
+          args: >
+            -Dsonar.projectKey=Ahmed-M-Elsayad_CinemaSystem
+            -Dsonar.organization=ahmed-m-elsayad
+            -Dsonar.sources=src,include
+            -Dsonar.sourceEncoding=UTF-8
+            -Dsonar.cfamily.compile-commands=${{ env.BUILD_WRAPPER_OUT_DIR }}/compile_commands.json
