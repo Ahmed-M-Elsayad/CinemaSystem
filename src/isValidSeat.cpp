@@ -1,18 +1,12 @@
 #include "isValidSeat.h"
 
+using namespace std;
 bool isValidSeat(const vector<vector<char>>& seats, int row, int col) {
-    // 1. التأكد من أن المصفوفة ليست فارغة
-    if (seats.empty()) {
+    // التعديل هنا: تم مسح الشرط المكرر
+    if (seats.empty() || row < 0 || row >= static_cast<int>(seats.size())) {
         return false;
     }
-
-    // 2. التأكد من أن الصف داخل الحدود
-    if (row < 0 || row >= seats.size()) {
-        return false;
-    }
-
-    // 3. التأكد من أن العمود داخل حدود هذا الصف تحديداً
-    if (col < 0 || col >= seats[row].size()) {
+    if (col < 0 || col >= static_cast<int>(seats[row].size())) {
         return false;
     }
 

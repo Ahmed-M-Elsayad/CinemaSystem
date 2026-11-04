@@ -5,16 +5,18 @@
 #include "showSalesReport.h"
 #include "saveAllData.h"
 #include "loadAllData.h"
+#include "getIntInput.h"
+#include "clearScreen.h"
+#include "pressEnterToContinue.h"
 #include <iostream>
+#include <limits>
 
 using namespace std;
 
-void showAdminMenu(vector<Movie>& movies,
-    vector<Hall>& halls,
-    vector<Booking>& bookings) {
-    int choice;
+void showAdminMenu(vector<Movie>& movies, vector<Hall>& halls, vector<Booking>& bookings) {
 
     while (true) {
+        clearScreen();
         cout << "\n========== ADMIN MENU ==========\n";
         cout << "1. Add Movie\n";
         cout << "2. Edit Movie\n";
@@ -24,36 +26,21 @@ void showAdminMenu(vector<Movie>& movies,
         cout << "6. Load All Data\n";
         cout << "7. Exit Admin Menu\n";
         cout << "Enter your choice: ";
-        cin >> choice;
+
+        int choice = getIntInput(1, 7);
 
         switch (choice) {
-        case 1:
-            adminAddMovie(movies, halls);
-            break;
-        case 2:
-            adminEditMovie(movies);
-            break;
-        case 3:
-            adminDeleteMovie(movies, bookings);
-            break;
-        case 4:
-            showSalesReport(movies, bookings);
-            break;
-        case 5:
-            saveAllData(halls, movies, bookings);
-            break;
-        case 6:
-            loadAllData(halls, movies, bookings);
-            break;
+        case 1: adminAddMovie(movies, halls); break;
+        case 2: adminEditMovie(movies); break;
+        case 3: adminDeleteMovie(movies, bookings); break;
+        case 4: showSalesReport(movies, bookings); break;
+        case 5: saveAllData(halls, movies, bookings); break;
+        case 6: loadAllData(halls, movies, bookings); break;
         case 7:
             cout << " Exiting Admin Menu.\n";
             return;
-        default:
-            cout << " Invalid choice! Please enter a number between 1 and 7.\n";
         }
 
-        cout << "\nPress Enter to continue...";
-        cin.ignore();
-        cin.get();
+        pressEnterToContinue();
     }
 }

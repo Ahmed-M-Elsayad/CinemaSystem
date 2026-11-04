@@ -1,12 +1,6 @@
-#ifndef ADMINADDMOVIE_H
-#define ADMINADDMOVIE_H
+#pragma once
 
 #include <vector>
 #include "CinemaData.h"
 
-using namespace std;
-
-// تعريف دالة إضافة فيلم (بصلاحية المدير)
-void adminAddMovie(vector<Movie>& movies, const vector<Hall>& halls);
-
-#endif
+void adminAddMovie(std::vector<Movie>& movies, const std::vector<Hall>& halls);

@@ -1,6 +1,7 @@
 #include "display_active.h"            // تضمين الهيدر
 #include <iostream>                    // تضمين للإخراج
 
+using namespace std;
 // تنفيذ دالة عرض الأفلام النشطة فقط (Now Showing)
 void displayActiveMovies(const vector<Movie>& movies) { // بداية الدالة
     bool found = false;               // علم لمعرفة ما إذا وُجد فيلم نشط

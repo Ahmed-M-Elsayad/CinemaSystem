@@ -1,14 +1,44 @@
-# 🔐 Security Policy
+# 🔐 سياسة الأمان (Security Policy)
 
-We take the security of this project seriously. If you discover any security vulnerability, please do not open a public issue.
+## الإصدارات المدعومة
 
-## Reporting a Vulnerability
-Please report the vulnerability directly to the Team Lead:
-📧 **Ahmed M. Elsayad** (via GitHub or the email listed on the profile).
+| الإصدار | الدعم الأمني |
+| :--- | :---: |
+| `main` (الأحدث) | ✅ |
+| أي فرع آخر | ❌ |
 
-Please include:
-- A clear description of the vulnerability.
-- Steps to reproduce it.
-- Potential impact.
+## الإبلاغ عن ثغرة أمنية
 
-You can expect a response within 48 hours.
+إذا اكتشفت ثغرة أمنية في **CinemaSystem**، **من فضلك لا تفتح Issue عامة**.
+
+الطريقة المفضلة:
+1. اذهب إلى تبويب **Security** في المستودع على GitHub.
+2. اضغط **Report a vulnerability** (Private Vulnerability Reporting).
+3. اشرح المشكلة وخطوات إعادة إنتاجها وتأثيرها المحتمل.
+
+بدلاً من ذلك، يمكنك التواصل مباشرة مع قائد الفريق: [@Ahmed-M-Elsayad](https://github.com/Ahmed-M-Elsayad).
+
+### ماذا نتوقع منك في البلاغ؟
+- وصف واضح للثغرة.
+- خطوات إعادة الإنتاج (Steps to Reproduce).
+- الملف/الدالة المتأثرة إن أمكن.
+- اقتراح للإصلاح (اختياري).
+
+### ماذا يمكنك أن تتوقع منا؟
+- تأكيد استلام البلاغ خلال **7 أيام**.
+- تقييم الثغرة وإبلاغك بالخطوات التالية.
+- ذكر اسمك في الشكر (إن رغبت) بعد الإصلاح.
+
+## الإجراءات الأمنية المطبقة في المشروع
+
+1. **لا كلمات مرور داخل الكود:** تُقرأ من متغير البيئة `CINEMA_ADMIN_PASSWORD` أو من `data/admin.hash`.
+2. **تجزئة كلمة السر:** تُخزَّن باستخدام `SHA-256` (لا تُحفظ كنص صريح أبداً).
+3. **صلاحيات الملفات:** `chmod 600` على `data/admin.hash` في Linux/macOS.
+4. **تعقيم المدخلات:** منع الرمز `|` في المدخلات النصية لحماية ملفات البيانات من الإفساد.
+5. **قراءة آمنة للملفات:** تخطي السطور التالفة بدلاً من انهيار البرنامج.
+6. **تحليل ساكن مستمر:** SonarCloud عبر GitHub Actions مع Quality Gate.
+
+## ⚠️ ملاحظات مهمة
+
+- لا ترفع أبداً ملف `data/admin.hash` أو أي كلمات مرور إلى GitHub (مستثنى في `.gitignore`).
+- المشروع تعليمي؛ `SHA-256` بدون Salt لا يُعد كافياً لأنظمة الإنتاج الحقيقية (يُنصح بـ bcrypt/Argon2).

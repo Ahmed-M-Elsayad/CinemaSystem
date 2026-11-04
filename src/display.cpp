@@ -1,6 +1,7 @@
 #include "display.h"               // تضمين الهيدر
 #include <iostream>                    // تضمين للإخراج
 
+using namespace std;
 // تنفيذ دالة عرض جميع الأفلام (بما في ذلك المنتهية)
 void displayAllMovies(const vector<Movie>& movies) { // بداية الدالة
     if (movies.empty()) {             // إذا لم توجد أفلام

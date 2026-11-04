@@ -1,14 +1,22 @@
 #include "exportTicketToFile.h"
 #include <fstream>
 #include <iostream>
+#include <filesystem>
+
+using namespace std;
 
 void exportTicketToFile(const Booking& booking, const Movie& movie) {
-    std::string filename = "receipts/Ticket_" + std::to_string(booking.bookingId) + ".txt";
-    std::ofstream file(filename);
+
+    std::filesystem::create_directories("receipts");
+
+    string filename = "receipts/Ticket_" + to_string(booking.bookingId) + ".txt";
+    ofstream file(filename);
+
     if (!file.is_open()) {
-        std::cout << "Error: Cannot create file " << filename << "\n";
+        cout << "Error: Cannot create file " << filename << "\n";
         return;
     }
+
     file << "========================================\n";
     file << "         CINEMA TICKET\n";
     file << "========================================\n";
@@ -19,6 +27,7 @@ void exportTicketToFile(const Booking& booking, const Movie& movie) {
     file << "Seats: " << booking.seatCount << "\n";
     file << "Total Price: " << booking.totalPrice << " EGP\n";
     file << "========================================\n";
+
     file.close();
-    std::cout << "Ticket exported to: " << filename << "\n";
+    cout << "Ticket exported to: " << filename << "\n";
 }

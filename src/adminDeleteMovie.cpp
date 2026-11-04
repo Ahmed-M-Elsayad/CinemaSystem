@@ -1,5 +1,6 @@
 #include "adminDeleteMovie.h"
 #include <iostream>
+#include <limits>
 
 using namespace std;
 
@@ -18,10 +19,14 @@ void adminDeleteMovie(vector<Movie>& movies, const vector<Booking>& bookings) {
             << " | status: " << m.status << endl;
     }
 
-    // 3. طلب رقم الفيلم المطلوب حذفه
+    // 3. طلب رقم الفيلم المطلوب حذفه (مع حماية من الحروف)
     cout << "\nEnter the ID of the movie you want to delete: ";
     int selectedMovieId;
-    cin >> selectedMovieId;
+    while (!(cin >> selectedMovieId)) {
+        cin.clear();
+        cin.ignore(numeric_limits<streamsize>::max(), '\n');
+        cout << "Invalid input. Please enter a valid number for the ID: ";
+    }
 
     // 4. البحث عن الفيلم
     bool movieFound = false;
@@ -43,7 +48,6 @@ void adminDeleteMovie(vector<Movie>& movies, const vector<Booking>& bookings) {
     // 5. التحقق من وجود حجوزات نشطة لهذا الفيلم
     bool hasActiveBookings = false;
     for (const auto& b : bookings) {
-        // إذا كان الحجز لنفس الفيلم وكان نشطاً (غير ملغي)
         if (b.movieId == selectedMovieId && b.isActive) {
             hasActiveBookings = true;
             break;

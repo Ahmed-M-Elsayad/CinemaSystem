@@ -1,68 +1,23 @@
-# ============================================
-# Visual Studio — ملفات النظام والمشروع
-# ============================================
-.vs/
-.vscode/
-x64/
-x86/
-Debug/
-Release/
-*.suo
-*.user
-*.VC.db
-*.VC.opendb
-*.sln
-*.vcxproj
-*.vcxproj.filters
-*.vcxproj.user
-
-# ============================================
-# الملفات التنفيذية (Executables)
-# ============================================
-*.exe
-*.out
-*.app
-*.dll
-*.so
-*.dylib
+# Build outputs
 cinema
-
-# ============================================
-# ملفات Object (نواتج الترجمة)
-# ============================================
+cinema.exe
 *.o
 *.obj
-*.gch
-*.pch
-*.pdb
-*.ilk
-*.lib
-*.exp
+*.out
+build/
+build_wrapper_output_directory/
 
-# ============================================
-# بيانات تُنشأ أثناء التشغيل (Runtime Data)
-# ============================================
-receipts/*
-!receipts/.gitkeep
-
-# تجاهل ملفات البيانات اللي بتتغير باستمرار
+# Runtime data (never commit secrets!)
+data/admin.hash
 data/bookings.txt
-data/admin.pass
+receipts/
 
-# ============================================
-# إعدادات المحرر ونظام التشغيل
-# ============================================
+# SonarCloud
+.scannerwork/
+
+# IDEs / OS
+.vscode/
 .idea/
 *.swp
-*.swo
-*~
 .DS_Store
 Thumbs.db
-desktop.ini
-
-# ============================================
-# ملفات مؤقتة
-# ============================================
-*.tmp
-*.log
-*.cache

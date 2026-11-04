@@ -1,24 +1,30 @@
-#include "display_halls.h"    // تضمين إعلان الدالة
-#include <iostream>    // للإخراج
-#include <format>   //  C++20
+#include "display_halls.h"
+#include <iostream>
+#include <iomanip>
+#include <string>
 
-void displayAllHalls(const std::vector<Hall>& halls) {
-    if (halls.empty()) {    // إن لم توجد صالات
-        std::cout << "No halls available.\n";
+using namespace std;
+
+void displayAllHalls(const vector<Hall>& halls) {
+    if (halls.empty()) {
+        cout << "No halls available.\n";
         return;
     }
 
-    // طباعة رأس جدول مبسط
-    std::cout << std::format("{:<6}{:<20}{:<8}{:<8}{:<6}\n", "ID", "Name", "Rows", "Cols", "VIP");
-    std::cout << std::string(48, '-') << "\n";
+    cout << left
+        << setw(6) << "ID"
+        << setw(20) << "Name"
+        << setw(8) << "Rows"
+        << setw(8) << "Cols"
+        << setw(6) << "VIP" << "\n";
+    cout << string(48, '-') << "\n";
 
-    // صفوف الصالات
     for (const auto& h : halls) {
-        std::cout << std::format("{:<6}{:<20}{:<8}{:<8}{:<6}\n",
-            h.hallId,
-            h.name,
-            h.rows,
-            h.cols,
-            (h.isVip ? "Yes" : "No"));
+        cout << left
+            << setw(6) << h.hallId
+            << setw(20) << h.name
+            << setw(8) << h.rows
+            << setw(8) << h.cols
+            << setw(6) << (h.isVip ? "Yes" : "No") << "\n";
     }
 }

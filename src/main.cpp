@@ -7,6 +7,8 @@
 #include "adminLogin.h"
 #include "showAdminMenu.h"
 #include "createBooking.h"
+#include "modifyBooking.h"
+#include "cancelBooking.h"
 #include "clearScreen.h"
 #include "getIntInput.h"
 #include "pressEnterToContinue.h"
@@ -14,13 +16,12 @@
 
 using namespace std;
 
+// المتغيرات العامة
 vector<Hall> halls;
 vector<Movie> movies;
 vector<Booking> bookings;
-int nextBookingId = STARTING_BOOKING_ID;
 
 int main() {
-
     cout << "\nLoading data...\n";
     loadAllData(halls, movies, bookings);
 
@@ -32,29 +33,40 @@ int main() {
     }
 
     cout << "\nSystem ready! (Halls: " << halls.size()
-         << ", Movies: " << movies.size()
-         << ", Bookings: " << bookings.size() << ")\n";
+        << ", Movies: " << movies.size()
+        << ", Bookings: " << bookings.size() << ")\n";
 
     while (true) {
         clearScreen();
         printHeader("CINEMA SYSTEM");
 
         cout << "========================================\n";
-        cout << "  1. Customer Mode (Booking)\n";
+        cout << "  1. Customer Mode\n";
         cout << "  2. Admin Mode\n";
         cout << "  3. Exit\n";
         cout << "========================================\n";
         cout << "Enter your choice: ";
 
-        // getIntInput بيتعامل مع الإدخال الغلط (قبل كده cin >> choice كان ممكن يعمل حلقة لا نهائية)
         const int choice = getIntInput(1, 3);
-        cin.ignore(numeric_limits<streamsize>::max(), '\n');
+        // التعديل هنا: تم مسح سطر cin.ignore غير الضروري
 
         if (choice == 1) {
-            cout << "\nCustomer Mode selected.\n";
-            createBooking(movies, bookings);
+            clearScreen();
+            printHeader("CUSTOMER MODE");
+            cout << "1. Book a Ticket\n";
+            cout << "2. Modify a Booking\n";
+            cout << "3. Cancel a Booking\n";
+            cout << "4. Back to Main Menu\n";
+            cout << "Enter your choice: ";
+
+            int custChoice = getIntInput(1, 4);
+
+            if (custChoice == 1) createBooking(movies, bookings);
+            else if (custChoice == 2) modifyBooking(bookings, movies);
+            else if (custChoice == 3) cancelBooking(bookings, movies);
         }
         else if (choice == 2) {
+            clearScreen();
             cout << "\nAdmin Mode selected.\n";
             if (adminLogin()) {
                 showAdminMenu(movies, halls, bookings);

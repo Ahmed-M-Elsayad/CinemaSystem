@@ -1,10 +1,13 @@
-#include "pressEnterToContinue.h"                // تضمين الهيدر
-#include <iostream>                     // تضمين للإخراج
-#include <limits>                       // تضمين لتنظيف باف الإدخال
+#include "pressEnterToContinue.h"
+#include <iostream>
+#include <limits>
+
 using namespace std;
 
-// تنفيذ دالة انتظار الضغط على Enter
 void pressEnterToContinue() {
-    cout << "Press Enter to continue..."; // رسالة للمستخدم
-    cin.ignore(numeric_limits<streamsize>::max(), '\n'); // تجاهل أي بيانات متبقية والانتظار
+    cout << "Press Enter to continue...";
+    cout.flush();
+    cin.clear(); // تنظيف أي أخطاء سابقة في الإدخال
+    cin.ignore(numeric_limits<streamsize>::max(), '\n'); // مسح أي \n متبقية
+    cin.get(); // الانتظار الفعلي للمستخدم
 }

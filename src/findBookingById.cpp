@@ -1,4 +1,6 @@
 #include "findBookingById.h"
+
+using namespace std;
 Booking* findBookingById(
     vector<Booking>& bookingList,
     int bookingId

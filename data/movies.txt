@@ -1,7 +1,7 @@
-1|Action Movie|Action|8:00 PM|100.00|1|Now Showing
+1|Action movie|action|7:00 PM|100.00|1|Now Showing
 5|6
 XOOOOO
 OOOOOO
 OOOOOO
-OOOOOO
+XOOOOO
 OOOOOO

@@ -1,12 +1,6 @@
 #pragma once
-#ifndef LOADALLDATA_H
-#define LOADALLDATA_H
 
 #include <vector>
 #include "CinemaData.h"
 
-using namespace std;
-
-void loadAllData(vector<Hall>& halls, vector<Movie>& movies, vector<Booking>& bookings);
-
-#endif
+void loadAllData(std::vector<Hall>& halls, std::vector<Movie>& movies, std::vector<Booking>& bookings);

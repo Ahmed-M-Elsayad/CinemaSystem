@@ -1,14 +1,6 @@
 #pragma once
-#ifndef FIND_HALL_H
-#define FIND_HALL_H
 
-#include "CinemaData.h"            // استيراد تعريف Hall و vector
+#include "CinemaData.h"
 
-
-// نسخة للقراءة: تعيد مؤشر ثابت إلى Hall أو nullptr إن لم توجد
 const Hall* findHallById(const std::vector<Hall>& halls, int hallId);
-
-// نسخة للتعديل: تعيد مؤشر قابل للتعديل إلى Hall أو nullptr إن لم توجد
 Hall* findHallById(std::vector<Hall>& halls, int hallId);
-
-#endif // FIND_HALL_H

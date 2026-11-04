@@ -1,110 +1,129 @@
-# 🎬 نظام حجز تذاكر السينما
+# 🎬 نظام حجز تذاكر السينما (CinemaSystem)
 
-**نظام متكامل لإدارة وحجز تذاكر السينما** — مشروع تعاوني بلغة **C++20** يوفر واجهتين منفصلتين للعملاء والمديرين، مع إدارة كاملة للأفلام والصالات والحجوزات.
+**نظام متكامل لإدارة وحجز تذاكر السينما** — مشروع تعاوني متميز بلغة **C++20** يوفر واجهتين منفصلتين (للعملاء والمديرين)، مع إدارة كاملة للأفلام، الصالات، الحجوزات، والتقارير المالية.
 
 [![C++](https://img.shields.io/badge/C%2B%2B-20-blue)](https://en.cppreference.com/w/cpp/20)
 [![License](https://img.shields.io/badge/License-Educational-yellow)](LICENSE)
 [![Build and SonarCloud Analysis](https://github.com/Ahmed-M-Elsayad/CinemaSystem/actions/workflows/ci.yml/badge.svg)](https://github.com/Ahmed-M-Elsayad/CinemaSystem/actions/workflows/ci.yml)
 [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=Ahmed-M-Elsayad_CinemaSystem&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=Ahmed-M-Elsayad_CinemaSystem)
 [![Security Rating](https://sonarcloud.io/api/project_badges/measure?project=Ahmed-M-Elsayad_CinemaSystem&metric=security_rating)](https://sonarcloud.io/summary/new_code?id=Ahmed-M-Elsayad_CinemaSystem)
-[![Maintainability Rating](https://sonarcloud.io/api/project_badges/measure?project=Ahmed-M-Elsayad_CinemaSystem&metric=sqale_rating)](https://sonarcloud.io/summary/new_code?id=Ahmed-M-Elsayad_CinemaSystem)
 
 ---
 
-## 🎯 نظرة عامة
+## 🎯 نظرة عامة (Overview)
 
-نظام سطح مكتب شامل يسمح بـ:
-- 🎭 **إدارة الأفلام** والصالات بكفاءة
-- 🎫 **نظام حجز متقدم** مع خريطة مقاعد تفاعلية
-- 💰 **نظام خصومات** تلقائي (10% لأكثر من 4 تذاكر)
-- 📊 **تقارير مبيعات** مفصلة للمدير
-- 💾 **حفظ واسترجاع** البيانات تلقائياً من الملفات
+**CinemaSystem** هو تطبيق سطح مكتب (Console-Based) تم بناؤه باستخدام **C++ المعاصر (C++20)**، مع التركيز على البرمجة الهيكلية (Structured Programming) بدون استخدام الكائنات (No OOP) لتبسيط المنطق البرمجي.
 
-**تم البناء باستخدام C++ المعاصر (C++20)** بدون OOP، مع التركيز على البساطة والوضوح في الكود.
+يتميز المشروع بـ:
+- 🏗️ **هندسة نظيفة:** فصل كامل بين ملفات الهيدر (`include/`) وملفات التنفيذ (`src/`).
+- 🔒 **أمان صارم (Security by Design):** لا توجد كلمات مرور مكتوبة في الكود (Hard-coded)، واستخدام تشفير `SHA-256` مع حماية صلاحيات الملفات.
+- 💾 **موثوقية البيانات (Reliability):** نظام حفظ واسترجاع (File I/O) يعتمد على صيغة `Pipe-separated`، مع تخطي السطور التالفة بدلاً من انهيار البرنامج.
+- ✅ **جودة الكود (CI/CD):** دمج GitHub Actions مع SonarCloud لضمان جودة الكود (Quality Gate) وخلوه من الثغرات الأمنية.
 
 ---
 
 ## ✨ المميزات الرئيسية
 
-### 👤 واجهة الزبون
-
+### 👤 واجهة الزبون (Customer Mode)
 | الميزة | الوصف |
 | :--- | :--- |
-| 🎭 **عرض الأفلام** | مشاهدة جميع الأفلام المتاحة (Now Showing) |
-| 🪑 **خريطة المقاعد** | عرض منسق لتوفر المقاعد (`O` = متاح، `X` = محجوز) |
-| 🎫 **حجز التذاكر** | حجز عدة تذاكر دفعة واحدة |
-| 💰 **الخصومات** | خصم تلقائي 10% عند حجز أكثر من 4 تذاكر |
-| 🔄 **التعديل والإلغاء** | تعديل الحجز (إضافة/إزالة مقاعد) أو إلغاؤه |
-| 📄 **التذاكر** | طباعة على الشاشة أو تصديرها كملف نصي |
+| 🎭 **عرض الأفلام** | مشاهدة جميع الأفلام المتاحة (Now Showing). |
+| 🪑 **خريطة المقاعد** | عرض تفاعلي لشاشة السينما (`O` = متاح، `X` = محجوز) مع منع حجز مقعد محجوز مسبقاً. |
+| 🎫 **حجز التذاكر** | إمكانية حجز حتى 10 تذاكر دفعة واحدة، مع إدخال رقم المقعد والصف. |
+| 💰 **الخصومات** | خصم تلقائي (10%) في حال حجز أكثر من 4 تذاكر في نفس العملية. |
+| 🔄 **تعديل وإلغاء الحجز** | إمكانية إضافة أو إزالة مقاعد من الحجز (مع تحديث السعر تلقائياً)، أو إلغاء الحجز بالكامل. |
+| 📄 **التذاكر** | طباعة التذكرة على الشاشة وتصديرها كملف نصي في مجلد `receipts/`. |
 
-### 🔐 واجهة المدير
-
+### 🔐 واجهة المدير (Admin Mode)
 | الميزة | الوصف |
 | :--- | :--- |
-| 🔑 **تسجيل آمن** | كلمة سر محمية بـ 3 محاولات فقط |
-| 🎬 **إدارة الأفلام** | إضافة، تعديل (سعر/حالة)، حذف |
-| 📊 **التقارير** | إجمالي الأرباح + أعلى فيلم مبيعاً |
-| 🔍 **التحقق الذكي** | منع حذف الأفلام التي عليها حجوزات نشطة |
-| 💾 **إدارة الملفات** | حفظ/تحميل كل البيانات دفعة واحدة |
+| 🔑 **تسجيل دخول آمن** | 3 محاولات فقط. يتم قراءة كلمة السر من متغير بيئة (`CINEMA_ADMIN_PASSWORD`) أو من ملف مشفر `data/admin.hash`. |
+| 🎬 **إدارة الأفلام** | إضافة فيلم جديد، تعديل سعر/حالة فيلم، أو حذف فيلم (بشرط عدم وجود حجوزات نشطة عليه). |
+| 📊 **التقارير** | عرض إجمالي الأرباح بناءً على الحجوزات النشطة والمدفوعة، واستخراج أعلى فيلم من حيث المبيعات. |
+| 💾 **إدارة الملفات** | حفظ وتحميل بيانات الصالات، الأفلام، والحجوزات يدوياً من القائمة. |
 
 ---
 
-## 👥 أعضاء الفريق
+## 🏗️ الهندسة المعمارية (Architecture)
 
-| الاسم | GitHub | الدور | المسؤوليات |
-| :--- | :--- | :--- | :--- |
-| **Ahmed M. Elsayad** | [@Ahmed-M-Elsayad](https://github.com/Ahmed-M-Elsayad) | 👨‍💼 القائد | واجهة المدير، إدارة الملفات، التجميع، `main` |
-| **Reda Elkplawy** | [@Redaelkplawy](https://github.com/Redaelkplawy) | 👨‍💻 عضو تطوير | نظام الحجوزات، إدارة المقاعد، التذاكر |
-| **Omar** | [@omaralqblawy](https://github.com/omaralqblawy) | 👨‍💻 عضو تطوير | إدارة الأفلام والصالات والمساعدات |
+يعتمد المشروع على التنظيم الصارم للملفات:
+- `include/`: يحتوي على ملفات الهيدر (`.h`) وتعاريف الهياكل (`Structs`) في ملف واحد مركزي `CinemaData.h`.
+- `src/`: يحتوي على ملفات التنفيذ (`.cpp`)، بحيث تكون كل دالة رئيسية في ملف منفصل لسهولة الصيانة والمراجعة.
+- `data/`: مجلد يُنشأ تلقائياً، يحتوي على ملفات `.txt` التي تعمل كقاعدة بيانات بسيطة.
+- `receipts/`: مجلد يُنشأ تلقائياً لحفظ تذاكر العملاء كملفات نصية.
 
----
-
-## 📋 المتطلبات
-
-- **مترجم C++** يدعم **C++20** أو أحدث:
-  - `g++ 10.0+` (Linux/macOS/MinGW)
-  - `MSVC 2019+` (Windows)
-- **نظام التشغيل**: Windows / Linux / macOS
-- **Git** (اختياري، للتطوير التعاوني)
-
----
-
-## 🚀 التثبيت والبناء
-
-### 1️⃣ استنساخ المستودع
-
-```bash
-git clone https://github.com/Ahmed-M-Elsayad/CinemaSystem.git
-cd CinemaSystem
+### 📁 هيكل المشروع
+```text
+CinemaSystem/
+├── .github/workflows/ci.yml     # GitHub Actions (Build + SonarCloud)
+├── include/
+│   └── CinemaData.h             # الـ Structs وتصريحات الدوال
+├── src/                         # ملفات التنفيذ (.cpp)
+├── data/                        # يُنشأ تلقائياً (قاعدة البيانات)
+├── receipts/                    # يُنشأ تلقائياً (التذاكر)
+├── FUNCTIONS_AGREEMENT.md       # عقد الدوال بين الفريق
+├── FILE_FORMAT_AGREEMENT.md     # تنسيق ملفات البيانات
+├── CONTRIBUTING.md              # دليل المساهمة
+├── SECURITY.md                  # سياسة الأمان
+├── LICENSE                      # الترخيص التعليمي
+├── sonar-project.properties     # إعدادات SonarCloud
+└── README.md
 ```
 
-### 2️⃣ البناء باستخدام GCC/Clang
+### هيكل البيانات الأساسي
+تم تصميم الـ `Structs` بعناية لضمان وجود قيم افتراضية لكل حقل لتجنب مشاكل المتغيرات غير المهيأة (Uninitialized Variables).
+```cpp
+struct Movie {
+    int movieId = 0;
+    std::string name;
+    std::string genre;
+    std::string showtime;
+    double price = 0.0;
+    int hallId = 0;
+    std::string status;              // "Now Showing" / "Coming Soon" / "Ended"
+    std::vector<std::vector<char>> seats; // 'O' = متاح، 'X' = محجوز
+};
+```
 
+### تنسيق الملفات (Data Format)
+تعتمد الملفات على الفاصل `|` (Pipe) لسهولة القراءة الآلية:
+```text
+movieId|name|genre|showtime|price|hallId|status
+rows|cols
+XXXXXX
+OOOOOO
+... (بقية المقاعد)
+```
+
+---
+
+## 🔐 الأمان (Security)
+
+نأخذ الأمان في هذا المشروع بجدية تامة:
+1. **لا كلمات مرور مكتوبة في الكود:** يبحث البرنامج عن كلمة السر في متغير البيئة، أو ملف `data/admin.hash`.
+2. **تشفير قوي:** تُحفظ كلمة السر باستخدام خوارزمية `SHA-256`.
+3. **حماية الملفات:** في بيئات Linux/macOS، يتم تطبيق صلاحيات `chmod 600` على ملف الـ `admin.hash` بعد إنشائه، بحيث لا يستطيع قراءته إلا صاحب الجهاز الحالي.
+4. **منع حقن البيانات:** دالة `getStringInput` تمنع المستخدم من إدخال الرمز `|` في أسماء الأفلام أو العملاء، مما يمنع إفساد ملفات البيانات.
+
+*(يرجى مراجعة ملف [`SECURITY.md`](SECURITY.md) لمعرفة كيفية الإبلاغ عن الثغرات).*
+
+---
+
+## 🚀 التثبيت والبناء (Build & Run)
+
+### المتطلبات
+- مترجم C++ يدعم **C++20** أو أحدث (مثل `g++ 10.0+` أو `MSVC 2019+`).
+
+### 1️⃣ بناء المشروع (GCC / Clang)
 ```bash
 # بناء بسيط
 g++ -std=c++20 -I include src/*.cpp -o cinema
 
-# مع تحسينات
-g++ -std=c++20 -O2 -I include src/*.cpp -o cinema
-
-# مع تحذيرات كاملة
+# بناء مع تحذيرات كاملة (موصى به)
 g++ -std=c++20 -Wall -Wextra -I include src/*.cpp -o cinema
 ```
 
-### 3️⃣ البناء على Visual Studio
-
-```
-1. File → New → Project → Empty Project
-2. Add Existing Items → اختر كل ملفات src/*.cpp
-3. Project Properties:
-   - C/C++ → Language → C++ Language Standard → ISO C++20
-   - C/C++ → General → Additional Include Directories → ./include/
-4. Build → Build Solution (Ctrl+Shift+B)
-5. Debug → Start Without Debugging (Ctrl+F5)
-```
-
-### 4️⃣ التشغيل
-
+### 2️⃣ التشغيل
 ```bash
 ./cinema          # Linux / macOS / MinGW
 cinema.exe        # Windows (CMD / PowerShell)
@@ -112,345 +131,30 @@ cinema.exe        # Windows (CMD / PowerShell)
 
 ---
 
-## 💻 الاستخدام
+## 👥 أعضاء الفريق وتوزيع المهام
 
-### القائمة الرئيسية
+| الاسم | GitHub | الدور الأساسي | عدد المهام |
+| :--- | :--- | :--- | :---: |
+| **Ahmed M. Elsayad** | [@Ahmed-M-Elsayad](https://github.com/Ahmed-M-Elsayad) | القائد، واجهة المدير، إدارة الملفات، التجميع | **20 مهمة** |
+| **Reda Elkplawy** | [@Redaelkplawy](https://github.com/Redaelkplawy) | نظام الحجوزات، إدارة المقاعد، التذاكر | **12 مهمة** |
+| **Omar** | [@omaralqblawy](https://github.com/omaralqblawy) | إدارة الأفلام، الصالات، الدوال المساعدة | **10 مهام** |
 
-عند تشغيل البرنامج، تظهر القائمة التالية:
-
-```
-╔════════════════════════════════════╗
-║   🎬 نظام حجز تذاكر السينما       ║
-╠════════════════════════════════════╣
-║  1. دخول الزبون                    ║
-║  2. دخول المدير                    ║
-║  3. خروج                           ║
-╚════════════════════════════════════╝
-```
-
-### 🎫 كزبون
-
-```
-1. اختر "دخول الزبون"
-2. اختر الفيلم المرغوب
-3. اختر المقاعد من الخريطة
-4. أدخل بياناتك (ID، الاسم، الهاتف)
-5. أتمم الحجز واحصل على التذكرة
-6. احفظ أو اطبع التذكرة
-```
-
-### 🔐 كمدير
-
-```
-1. اختر "دخول المدير"
-2. أدخل كلمة السر (3 محاولات مسموحة)
-3. استخدم القائمة الإدارية:
-   - إضافة/تعديل/حذف الأفلام
-   - عرض التقارير المالية
-   - حفظ/تحميل البيانات
-```
+📖 للتفاصيل الكاملة حول أسماء الدوال وتوقيعاتها: راجع [`FUNCTIONS_AGREEMENT.md`](FUNCTIONS_AGREEMENT.md).
 
 ---
 
-## 📁 هيكل المشروع
+## 🛠️ التكامل المستمر (CI/CD)
 
-```
-CinemaSystem/
-│
-├── 📄 README.md                    # هذا الملف
-├── 📄 LICENSE                      # رخصة المشروع
-├── 📄 .gitignore                   # ملفات Git المستبعدة
-├── 📄 FUNCTIONS_AGREEMENT.md       # اتفاقية أسماء الدوال
-│
-├── 📂 include/                     # ملفات الهيدر (.h)
-│   ├── CinemaData.h                # ⭐ تعريف كل الـ Structs والثوابت
-│   ├── adminAddMovie.h
-│   ├── adminDeleteMovie.h
-│   ├── adminEditMovie.h
-│   ├── adminLogin.h
-│   ├── bookSeat.h
-│   ├── calculateTotalPrice.h
-│   ├── cancelBooking.h
-│   ├── clearScreen.h
-│   ├── createBooking.h
-│   ├── delete_movie.h
-│   ├── display.h
-│   ├── displaySeats.h
-│   ├── display_active.h
-│   ├── display_halls.h
-│   ├── exportTicketToFile.h
-│   ├── findBookingById.h
-│   ├── find_hall.h
-│   ├── find_movie.h
-│   ├── getAvailableSeatsCount.h
-│   ├── getIntInput.h
-│   ├── getStringInput.h
-│   ├── initializeSeats.h
-│   ├── isSeatAvailable.h
-│   ├── isValidSeat.h
-│   ├── loadAllData.h
-│   ├── loadBookingsFromFile.h
-│   ├── loadHallsFromFile.h
-│   ├── loadMoviesFromFile.h
-│   ├── modifyBooking.h
-│   ├── pressEnterToContinue.h
-│   ├── printHeader.h
-│   ├── printTicket.h
-│   ├── saveAllData.h
-│   ├── saveBookingsToFile.h
-│   ├── saveHallsToFile.h
-│   ├── saveMoviesToFile.h
-│   ├── seedData.h
-│   ├── showAdminMenu.h
-│   ├── showSalesReport.h
-│   ├── unbookSeat.h
-│   ├── update_price.h
-│   └── update_status.h
-│
-├── 📂 src/                         # ملفات السورس (.cpp)
-│   ├── main.cpp                    # ⭐ نقطة بداية البرنامج
-│   ├── adminAddMovie.cpp
-│   ├── adminDeleteMovie.cpp
-│   ├── adminEditMovie.cpp
-│   ├── adminLogin.cpp
-│   ├── bookSeat.cpp
-│   ├── calculateTotalPrice.cpp
-│   ├── cancelBooking.cpp
-│   ├── clearScreen.cpp
-│   ├── createBooking.cpp
-│   ├── delete_movie.cpp
-│   ├── display.cpp
-│   ├── displaySeats.cpp
-│   ├── display_active.cpp
-│   ├── display_halls.cpp
-│   ├── exportTicketToFile.cpp
-│   ├── findBookingById.cpp
-│   ├── find_hall_const.cpp
-│   ├── find_hall_mut.cpp
-│   ├── find_movie_const.cpp
-│   ├── find_movie_mut.cpp
-│   ├── getAvailableSeatsCount.cpp
-│   ├── getIntInput.cpp
-│   ├── getStringInput.cpp
-│   ├── initializeSeats.cpp
-│   ├── isSeatAvailable.cpp
-│   ├── isValidSeat.cpp
-│   ├── loadAllData.cpp
-│   ├── loadBookingsFromFile.cpp
-│   ├── loadHallsFromFile.cpp
-│   ├── loadMoviesFromFile.cpp
-│   ├── modifyBooking.cpp
-│   ├── pressEnterToContinue.cpp
-│   ├── printHeader.cpp
-│   ├── printTicket.cpp
-│   ├── saveAllData.cpp
-│   ├── saveBookingsToFile.cpp
-│   ├── saveHallsToFile.cpp
-│   ├── saveMoviesToFile.cpp
-│   ├── seedData.cpp
-│   ├── showAdminMenu.cpp
-│   ├── showSalesReport.cpp
-│   ├── unbookSeat.cpp
-│   ├── update_price.cpp
-│   └── update_status.cpp
-│
-├── 📂 data/                        # ملفات البيانات (تُنشأ تلقائياً)
-│   ├── halls.txt
-│   ├── movies.txt
-│   └── bookings.txt
-│
-├── 📂 receipts/                    # التذاكر المُصدَّرة كملفات
-│
-└── 📂 docs/                        # التوثيق
-    ├── FUNCTIONS_AGREEMENT.md
-    ├── TASKS_LIST.md
-    ├── MEETING_AGENDA.md
-    └── FILE_FORMAT_AGREEMENT.md
-```
+عند كل `push` على الفرع `main` أو عند فتح `Pull Request`، يتم تشغيل **GitHub Actions**:
+1. يتم بناء المشروع باستخدام `g++` مع `-Wall -Wextra`.
+2. يتم تشغيل تحليل ساكن (Static Analysis) عبر **SonarCloud**.
+3. يجب أن يمر الكود من **Quality Gate** (خلوه من الـ Bugs، الثغرات، وتقليل تكرار الكود) قبل قبول أي دمج.
 
 ---
 
-## 🏗️ الهندسة المعمارية
-
-### هيكل البيانات الأساسي
-
-**`include/CinemaData.h`** يحتوي على تعريف كل الـ Structs والثوابت:
-
-```cpp
-// ─── التاريخ ───
-struct Date {
-    int day, month, year;
-};
-
-// ─── الصالة ───
-struct Hall {
-    int hallId;
-    string name;
-    int rows, cols;
-    bool isVip;
-};
-
-// ─── الفيلم ───
-struct Movie {
-    int movieId;
-    string name;
-    string genre;
-    string showtime;
-    double price;
-    int hallId;
-    string status;              // "Now Showing" / "Coming Soon" / "Ended"
-    vector<vector<char>> seats; // 'O' = فاضي، 'X' = محجوز
-};
-
-// ─── العميل ───
-struct Customer {
-    int customerId;
-    string fullName;
-    string phone;
-};
-
-// ─── الحجز ───
-struct Booking {
-    int bookingId;              // يبدأ من 1001
-    int movieId;
-    string movieName;
-    Customer customer;
-    vector<pair<int, int>> seats;
-    int seatCount;
-    double pricePerSeat;
-    double originalPrice;
-    double discountAmount;
-    double totalPrice;
-    Date bookingDate;
-    bool isActive;
-    bool isPaid;
-};
-```
-
-### الثوابت العامة
-
-```cpp
-const string ADMIN_PASSWORD = "admin123";
-const int    ROWS_DEFAULT   = 5;
-const int    COLS_DEFAULT   = 6;
-const int    DISCOUNT_THRESHOLD = 4;      // خصم عند > 4 تذاكر
-const double DISCOUNT_RATE  = 0.10;       // 10%
-const int    STARTING_BOOKING_ID = 1001;
-```
-
-### تنسيق الملفات
-
-كل ملفات البيانات تستخدم صيغة **pipe-separated** (`|`):
-
-**`data/halls.txt`**:
-```
-hallId|name|rows|cols|isVip
-1|Main Hall|5|6|1
-```
-
-**`data/movies.txt`**:
-```
-movieId|name|genre|showtime|price|hallId|status
-rows|cols
-XXXXXX
-OOOOOO
-...
-```
-
-**`data/bookings.txt`**:
-```
-bookingId|movieId|movieName|seatCount|pricePerSeat|originalPrice|discountAmount|totalPrice|isActive|isPaid
-customerId|customerName|phone
-row col
-row col
-day month year
-```
-
----
-
-## 📊 توزيع المهام
-
-### Ahmed M. Elsayad — 20 مهمة
-- إدارة المشروع والتجميع
-- واجهة المدير (Login، Menu، Add/Edit/Delete Movie، Report)
-- إدارة الملفات (Save/Load)
-- دالة `main` والبيانات التجريبية
-- دوال المساعدة (`bookSeat`, `unbookSeat`, إلخ)
-
-### Reda Elkplawy — 12 مهمة
-- نظام الحجوزات (`createBooking`, `cancelBooking`, `modifyBooking`)
-- إدارة المقاعد (`initializeSeats`, `displaySeats`, `isSeatAvailable`)
-- حساب الأسعار (`calculateTotalPrice`)
-- التذاكر (`printTicket`, `exportTicketToFile`)
-
-### Omar — 13 مهمة
-- إدارة الأفلام (`addNewMovie`, `displayAllMovies`, `deleteMovie`)
-- إدارة الصالات (`addNewHall`, `displayAllHalls`, `findHallById`)
-- دوال مساعدة (`clearScreen`, `printHeader`, `pressEnterToContinue`)
-
-📖 للتفاصيل الكاملة: راجع [`FUNCTIONS_AGREEMENT.md`](FUNCTIONS_AGREEMENT.md) و `docs/TASKS_LIST.md`
-
----
-
-## 🤝 المساهمة
-
-نرحب بالمساهمات! اتبع الخطوات:
-
-### 1. أنشئ فرع جديد
-
-```bash
-git checkout -b feature/اسم-الميزة
-# أو
-git checkout -b bugfix/اسم-المشكلة
-```
-
-### 2. اعمل تعديلاتك
-
-```bash
-git add .
-git commit -m "وصف واضح للتغييرات"
-git push origin feature/اسم-الميزة
-```
-
-### 3. افتح Pull Request
-
-- اذهب إلى GitHub
-- افتح PR مع وصف مفصل
-- انتظر المراجعة
-
-### معايير الكود
-
-- ✨ **الأسلوب**: اتبع نفس أسلوب `CinemaData.h`
-- 📝 **التعليقات**: أضف تعليقات واضحة بالعربية أو الإنجليزية
-- 🧪 **الاختبار**: تأكد أن الكود يُبنى بدون أخطاء
-- 📖 **التوثيق**: حدّث `FUNCTIONS_AGREEMENT.md` عند إضافة دوال جديدة
-
----
-
-## 📄 الترخيص
-
-هذا المشروع **للأغراض التعليمية فقط**.
-
-- ✅ الاستخدام التعليمي والأكاديمي
-- ❌ الاستخدام التجاري
-- ⚠️ بدون أي ضمانات
-
-راجع ملف [`LICENSE`](LICENSE) للتفاصيل الكاملة.
-
----
-
-## 🙏 شكر خاص
-
-- 👨‍🏫 المشرف على المشروع
-- 👥 أعضاء الفريق المتعاونون
-- 💪 كل من راجع واختبر الكود
-
----
+## 📄 الترخيص (License)
+هذا المشروع مخصص **للأغراض التعليمية والأكاديمية فقط**. يُمنع الاستخدام التجاري. يرجى مراجعة ملف [`LICENSE`](LICENSE) للتفاصيل.
 
 <div align="center">
-
-### 🎬 استمتع بتجربة نظام السينما! 🍿
-
-**صُنع بـ ❤️ من قبل فريق طلابي متحمس**
-
+  <b>صُنع بـ ❤️ من قبل فريق CinemaSystem</b>
 </div>

@@ -1,12 +1,6 @@
 #pragma once
-#ifndef LOADBOOKINGSFROMFILE_H
-#define LOADBOOKINGSFROMFILE_H
 
-#include "CinemaData.h"
 #include <vector>
+#include "CinemaData.h"
 
-using namespace std;
-
-void loadBookingsFromFile(vector<Booking>& bookings);
-
-#endif
+void loadBookingsFromFile(std::vector<Booking>& bookings);

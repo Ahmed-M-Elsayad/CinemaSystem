@@ -1,5 +1,6 @@
 #include "seedData.h"
 
+using namespace std;
 void seedData(vector<Hall>& halls, vector<Movie>& movies) {
     // مسح أي بيانات موجودة حتى لا نكررها إذا تم استدعاء الدالة أكثر من مرة
     halls.clear();

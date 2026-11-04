@@ -7,35 +7,49 @@
 using namespace std;
 
 void cancelBooking(vector<Booking>& bookingList, vector<Movie>& movieList) {
-         //  التحقق من وجود حجوزات
+    // 1. التحقق من وجود حجوزات
     if (bookingList.empty()) {
         cout << "No bookings available.\n";
         return;
     }
-    //  طلب رقم الحجز (مع تحقق)
+
+    // 2. طلب رقم الحجز (مع تحقق)
     cout << "Enter booking ID to cancel: ";
     int bookingId = getIntInput(1, 999999);
-    //  البحث عن الحجز
+
+    // 3. البحث عن الحجز
     Booking* booking = findBookingById(bookingList, bookingId);
     if (booking == nullptr) {
         cout << "Booking not found.\n";
         return;
     }
-    //  التحقق من أن الحجز نشط
+
+    // 4. التحقق من أن الحجز نشط
     if (!booking->isActive) {
         cout << "This booking is already cancelled.\n";
         return;
     }
-    //  استرجاع المقاعد
+
+    // 5. استرجاع المقاعد (التعديل الجديد هنا)
+    bool movieFound = false;
     for (auto& movie : movieList) {
         if (movie.movieId == booking->movieId) {
+            movieFound = true;
             for (const auto& [row, col] : booking->seats) {
-                unbookSeat(movie.seats, row, col);
+                if (!unbookSeat(movie.seats, row, col)) {
+                    cerr << "Warning: Failed to unbook seat at row " << row << ", col " << col << "\n";
+                }
             }
             break;
         }
     }
-    //  تغيير حالة الحجز
+
+    // التحقق: لو الفيلم مش موجود في القائمة (اتحذف مثلاً)
+    if (!movieFound) {
+        cerr << "Warning: Movie not found, seats cannot be unbooked.\n";
+    }
+
+    // 6. تغيير حالة الحجز
     booking->isActive = false;
     cout << "Booking cancelled successfully.\n";
 }

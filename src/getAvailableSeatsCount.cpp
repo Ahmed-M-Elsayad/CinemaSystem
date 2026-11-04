@@ -1,5 +1,6 @@
 #include "getAvailableSeatsCount.h"
 
+using namespace std;
 int getAvailableSeatsCount(const vector<vector<char>>& seats) {
     int availableCount = 0;
 

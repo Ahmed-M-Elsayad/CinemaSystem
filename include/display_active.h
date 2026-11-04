@@ -1,10 +1,5 @@
 #pragma once
-#ifndef DISPLAY_ACTIVE_H               // حماية من التضمين المتكرر
-#define DISPLAY_ACTIVE_H
 
-#include "CinemaData.h"               // استيراد هياكل البيانات
-              
+#include "CinemaData.h"
 
-void displayActiveMovies(const std::vector<Movie>& movies); // إعلان الدالة
-
-#endif // DISPLAY_ACTIVE_H
+void displayActiveMovies(const std::vector<Movie>& movies);

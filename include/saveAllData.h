@@ -1,12 +1,6 @@
 #pragma once
-#ifndef SAVEALLDATA_H
-#define SAVEALLDATA_H
 
 #include <vector>
 #include "CinemaData.h"
 
-using namespace std;
-
-void saveAllData(const vector<Hall>& halls, const vector<Movie>& movies, const vector<Booking>& bookings);
-
-#endif
+void saveAllData(const std::vector<Hall>& halls, const std::vector<Movie>& movies, const std::vector<Booking>& bookings);

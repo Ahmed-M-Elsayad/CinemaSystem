@@ -12,59 +12,74 @@ using namespace std;
 
 namespace {
 
-constexpr int MAX_SEATS_PER_BOOKING = 10;
+    constexpr int MAX_SEATS_PER_BOOKING = 10;
 
-bool addSeats(Movie& movie, Booking& booking) {
-    const int freeSeats = countFreeSeats(movie);
-    if (freeSeats == 0) {
-        cout << "No free seats available.\n";
-        return false;
+    bool addSeats(Movie& movie, Booking& booking) {
+        const int freeSeats = countFreeSeats(movie);
+        if (freeSeats == 0) {
+            cout << "No free seats available.\n";
+            return false;
+        }
+
+        // التعديل الجديد: حساب السعة المتبقية لهذا الحجز
+        int currentSeats = static_cast<int>(booking.seats.size());
+        int roomLeft = MAX_SEATS_PER_BOOKING - currentSeats;
+
+        if (roomLeft <= 0) {
+            cout << "You have reached the maximum limit of " << MAX_SEATS_PER_BOOKING << " seats per booking.\n";
+            return false;
+        }
+
+        // الحد الأقصى الذي يمكن إضافته هو الأقل بين (المساحة المتبقية للحجز) و (المقاعد الفارغة في الصالة)
+        int maxToAdd = min(roomLeft, freeSeats);
+
+        displaySeats(movie.seats);
+        cout << "How many seats to add? (1-" << maxToAdd << "): ";
+        const int numToAdd = getIntInput(1, maxToAdd);
+        selectSeats(movie, booking, numToAdd);
+        return true;
     }
 
-    displaySeats(movie.seats);
-    cout << "How many seats to add? ";
-    const int numToAdd = getIntInput(1, min(MAX_SEATS_PER_BOOKING, freeSeats));
-    selectSeats(movie, booking, numToAdd);
-    return true;
-}
+    bool removeSeats(Movie& movie, Booking& booking) {
+        if (booking.seats.empty()) {
+            cout << "No seats to remove.\n";
+            return false;
+        }
 
-bool removeSeats(Movie& movie, Booking& booking) {
-    if (booking.seats.empty()) {
-        cout << "No seats to remove.\n";
-        return false;
+        cout << "How many seats to remove? ";
+        const int numToRemove = getIntInput(1, static_cast<int>(booking.seats.size()));
+
+        for (int i = 0; i < numToRemove; i++) {
+            // عرض المقاعد المتبقية في كل مرة
+            cout << "\n--- Current Seats ---\n";
+            for (size_t j = 0; j < booking.seats.size(); j++) {
+                cout << (j + 1) << ". Row " << (booking.seats[j].first + 1)
+                    << ", Col " << (booking.seats[j].second + 1) << "\n";
+            }
+
+            cout << "\n--- Remove Seat " << (i + 1) << " of " << numToRemove << " ---\n";
+            cout << "Enter seat number to remove (1-" << booking.seats.size() << "): ";
+            const auto index = static_cast<size_t>(
+                getIntInput(1, static_cast<int>(booking.seats.size())) - 1);
+
+            if (!unbookSeat(movie.seats, booking.seats[index].first, booking.seats[index].second)) {
+                cerr << "Warning: Failed to unbook seat.\n";
+            }
+            booking.seats.erase(booking.seats.begin() + static_cast<ptrdiff_t>(index));
+            cout << "Seat removed.\n";
+        }
+        return true;
     }
 
-    cout << "\n--- Current Seats ---\n";
-    for (size_t i = 0; i < booking.seats.size(); i++) {
-        cout << (i + 1) << ". Row " << (booking.seats[i].first + 1)
-             << ", Col " << (booking.seats[i].second + 1) << "\n";
+    void printSummary(const Booking& b) {
+        cout << "\n========================================\n";
+        cout << "   Booking modified successfully!\n";
+        cout << "========================================\n";
+        cout << "Booking ID     : " << b.bookingId << "\n";
+        cout << "New Seats Count: " << b.seatCount << "\n";
+        cout << "New Total Price: " << b.totalPrice << " EGP\n";
+        cout << "========================================\n";
     }
-
-    cout << "How many seats to remove? ";
-    const int numToRemove = getIntInput(1, static_cast<int>(booking.seats.size()));
-
-    for (int i = 0; i < numToRemove; i++) {
-        cout << "\n--- Remove Seat " << (i + 1) << " of " << numToRemove << " ---\n";
-        cout << "Enter seat number to remove (1-" << booking.seats.size() << "): ";
-        const auto index = static_cast<size_t>(
-            getIntInput(1, static_cast<int>(booking.seats.size())) - 1);
-
-        unbookSeat(movie.seats, booking.seats[index].first, booking.seats[index].second);
-        booking.seats.erase(booking.seats.begin() + static_cast<ptrdiff_t>(index));
-        cout << "Seat removed.\n";
-    }
-    return true;
-}
-
-void printSummary(const Booking& b) {
-    cout << "\n========================================\n";
-    cout << "   Booking modified successfully!\n";
-    cout << "========================================\n";
-    cout << "Booking ID     : " << b.bookingId << "\n";
-    cout << "New Seats Count: " << b.seatCount << "\n";
-    cout << "New Total Price: " << b.totalPrice << " EGP\n";
-    cout << "========================================\n";
-}
 
 }  // namespace
 
@@ -101,7 +116,7 @@ void modifyBooking(vector<Booking>& bookingList, vector<Movie>& movieList) {
     }
 
     const bool changed = (choice == 1) ? addSeats(*movie, *booking)
-                                       : removeSeats(*movie, *booking);
+        : removeSeats(*movie, *booking);
     if (!changed) {
         return;
     }

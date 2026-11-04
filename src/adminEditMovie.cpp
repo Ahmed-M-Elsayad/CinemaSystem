@@ -1,5 +1,7 @@
 #include "adminEditMovie.h"
+#include "getStringInput.h" // تمت إضافتها لاستخدام الدالة الآمنة
 #include <iostream>
+#include <limits>
 
 using namespace std;
 
@@ -19,10 +21,14 @@ void adminEditMovie(vector<Movie>& movies) {
             << " | Status: " << m.status << endl;
     }
 
-    // 3. طلب رقم الفيلم من المدير
+    // 3. طلب رقم الفيلم من المدير (مع حماية من الحروف)
     cout << "\nInput the ID of the movie you want to edit: ";
     int selectedMovieId;
-    cin >> selectedMovieId;
+    while (!(cin >> selectedMovieId)) {
+        cin.clear();
+        cin.ignore(numeric_limits<streamsize>::max(), '\n');
+        cout << "Invalid input. Please enter a valid number for the ID: ";
+    }
 
     // 4. البحث عن الفيلم
     bool movieFound = false;
@@ -30,7 +36,7 @@ void adminEditMovie(vector<Movie>& movies) {
         if (m.movieId == selectedMovieId) {
             movieFound = true;
 
-            // 5. عرض قائمة الخيارات للتعديل
+            // 5. عرض قائمة الخيارات للتعديل (مع حماية من الحروف)
             cout << "\n--- Edit Movie: " << m.name << " ---\n";
             cout << "1. Edit Price\n";
             cout << "2. Edit Status (Now Showing / Coming Soon / Ended)\n";
@@ -38,29 +44,34 @@ void adminEditMovie(vector<Movie>& movies) {
             cout << "Choose the operation number: ";
 
             int choice;
-            cin >> choice;
+            while (!(cin >> choice) || choice < 1 || choice > 3) {
+                cin.clear();
+                cin.ignore(numeric_limits<streamsize>::max(), '\n');
+                cout << "Invalid choice. Enter a number between 1 and 3: ";
+            }
 
             switch (choice) {
             case 1:
                 cout << "Input the new price: ";
-                cin >> m.price;
+                // حماية عند إدخال السعر
+                while (!(cin >> m.price) || m.price <= 0) {
+                    cin.clear();
+                    cin.ignore(numeric_limits<streamsize>::max(), '\n');
+                    cout << "Invalid input. Please enter a valid positive number for the price: ";
+                }
                 cout << "\nThe movie price has been updated successfully!\n";
                 break;
             case 2:
-                cout << "Input the new status: ";
-                cin.ignore(); // تنظيف الـ buffer قبل قراءة النصوص
-                getline(cin, m.status);
+                // التعديل هنا: استخدام getStringInput بدلاً من getline
+                m.status = getStringInput("Input the new status: ");
                 if (m.status.empty()) m.status = "Now Showing";
                 cout << "\nThe movie status has been updated successfully!\n";
                 break;
             case 3:
                 cout << "Operation cancelled.\n";
                 break;
-            default:
-                cout << "Invalid choice!\n";
-                break;
             }
-            break; // خروج من اللوب بعد إيجاد الفيلم
+            break; // خروج من اللوب بعد إيجاد الفيلم وتعديله
         }
     }
 

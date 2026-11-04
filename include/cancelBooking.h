@@ -2,9 +2,7 @@
 #include "CinemaData.h"
 #include <vector>
 
-
-
 void cancelBooking(
-    vector<Booking>& bookings,
-    vector<Movie>& movies
+    std::vector<Booking>& bookings,
+    std::vector<Movie>& movies
 );

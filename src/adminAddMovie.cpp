@@ -1,16 +1,17 @@
 #include "adminAddMovie.h"
+#include "getStringInput.h" 
+#include "getIntInput.h"    // تم إضافتها لاستخدام دالة إدخال الأرقام الآمنة
 #include <iostream>
+#include <limits>
 
 using namespace std;
 
 void adminAddMovie(vector<Movie>& movies, const vector<Hall>& halls) {
-    // 1. التأكد من وجود صالات قبل إضافة الفيلم
     if (halls.empty()) {
-        cout << "\nError: No lounges are registered! Add a lounge first.\n";
+        cout << "\nError: No halls are registered! Add a hall first.\n";
         return;
     }
 
-    // 2. عرض الصالات المتاحة للمدير
     cout << "\n=== Available Halls ===" << endl;
     for (const auto& hall : halls) {
         cout << "Hall ID: " << hall.hallId
@@ -18,56 +19,55 @@ void adminAddMovie(vector<Movie>& movies, const vector<Hall>& halls) {
             << " | Seats: " << hall.rows << "x" << hall.cols << endl;
     }
 
-    // 3. إدخال بيانات الفيلم الجديد
     Movie newMovie;
-    // توليد ID تلقائي بناءً على آخر فيلم مضاف
-    newMovie.movieId = movies.size() + 1;
+
+    // إصلاح مشكلة تكرار الـ ID
+    int maxId = 0;
+    for (const auto& m : movies) {
+        if (m.movieId > maxId) maxId = m.movieId;
+    }
+    newMovie.movieId = maxId + 1;
 
     cout << "\n--- Adding New Movie ---\n";
-    cout << "Movie Name: ";
-    cin.ignore(); // لتنظيف الـ newline المتبقي
-    getline(cin, newMovie.name);
 
-    cout << "Genre (Action/Drama/Comedy): ";
-    getline(cin, newMovie.genre);
-
-    cout << "Showtime (e.g., 8:00 PM): ";
-    getline(cin, newMovie.showtime);
+    // استخدام getStringInput للنصوص (آمن ضد المسافات و \n ورمز |)
+    newMovie.name = getStringInput("Movie Name: ");
+    newMovie.genre = getStringInput("Genre (Action/Drama/Comedy): ");
+    newMovie.showtime = getStringInput("Showtime (e.g., 8:00 PM): ");
 
     cout << "Ticket Price: ";
-    cin >> newMovie.price;
+    // حماية: منع إدخال حروف أو أرقام سالبة (السعر من نوع double، فلا توجد دالة جاهزة له)
+    while (!(cin >> newMovie.price) || newMovie.price <= 0) {
+        cin.clear();
+        cin.ignore(numeric_limits<streamsize>::max(), '\n');
+        cout << "Invalid input. Please enter a valid positive number for the price: ";
+    }
 
+    // التعديل الجديد: استخدام getIntInput بدلاً من حلقة while و cin.ignore
+    // نضع حداً أقصى كبيراً (مثلاً 9999) لأننا لا نعرف أرقام الصالات مسبقاً
     cout << "Select Hall ID: ";
-    int selectedHallId;
-    cin >> selectedHallId;
+    int selectedHallId = getIntInput(1, 9999);
 
-    // 4. البحث عن الصالة المختارة وتجهيز مقاعدها
     bool hallFound = false;
     for (const auto& hall : halls) {
         if (hall.hallId == selectedHallId) {
             hallFound = true;
             newMovie.hallId = hall.hallId;
-
-            // إنشاء مصفوفة 2D للمقاعد وملءها بحرف 'O' (فاضي) حسب أبعاد الصالة
+            // إنشاء مقاعد الصالة بحرف 'O' (فاضي)
             newMovie.seats.assign(hall.rows, vector<char>(hall.cols, 'O'));
             break;
         }
     }
 
-    // لو الصالة غير موجودة، نوقف العملية
     if (!hallFound) {
         cout << "Error: Hall ID not found!\n";
         return;
     }
 
-    // 5. إدخال الحالة (اختياري، مع قيمة افتراضية)
-    cout << "Movie Status (Now Showing / Coming Soon / Ended): ";
-    cin.ignore();
-    getline(cin, newMovie.status);
+    // استخدام getStringInput للحالة
+    newMovie.status = getStringInput("Movie Status (Now Showing / Coming Soon / Ended): ");
     if (newMovie.status.empty()) newMovie.status = "Now Showing";
 
-    // 6. إضافة الفيلم للقائمة
     movies.push_back(newMovie);
-
     cout << "\nMovie added successfully: \"" << newMovie.name << "\"!\n";
 }
