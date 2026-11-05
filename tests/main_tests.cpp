@@ -134,6 +134,20 @@ void testSeatBooking() {
     std::cout << "[PASS] testSeatBooking" << std::endl;
 }
 
+// اختبار حالة المصفوفة الفارغة (لتغطية الفروع الشرطية)
+void testEmptySeats() {
+    std::vector<std::vector<char>> emptySeats;
+
+    // التأكد من أن الدوال تتعامل بأمان مع المصفوفات الفارغة
+    assert(isValidSeat(emptySeats, 0, 0) == false);
+    assert(bookSeat(emptySeats, 0, 0) == false);
+    assert(unbookSeat(emptySeats, 0, 0) == false);
+    assert(isSeatAvailable(emptySeats, 0, 0) == false);
+    assert(getAvailableSeatsCount(emptySeats) == 0);
+
+    std::cout << "[PASS] testEmptySeats" << std::endl;
+}
+
 // اختبارات الـ Finders
 void testFinders() {
     // 1. تجهيز بيانات وهمية
@@ -185,6 +199,7 @@ int main() {
     testSeatBooking();
     testFileUtilsParsing();
     testBookingHelpersFunctions();
+    testEmptySeats(); // الاختبار الجديد
     testFinders();
 
     std::cout << "\nAll tests passed successfully!" << std::endl;
