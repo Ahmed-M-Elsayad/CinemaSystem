@@ -16,15 +16,27 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
         with:
-          fetch-depth: 0   # required by SonarCloud for accurate blame info
+          fetch-depth: 0
 
-      - name: Install Build Wrapper
-        uses: SonarSource/sonarqube-scan-action/install-build-wrapper@v4
+      - name: Install dependencies (gcovr & Build Wrapper)
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y gcovr
+          wget -q https://sonarcloud.io/static/cpp/build-wrapper-linux-x86.zip
+          unzip -q build-wrapper-linux-x86.zip
 
       - name: Build with build-wrapper
         run: |
-          build-wrapper-linux-x86-64 --out-dir ${{ env.BUILD_WRAPPER_OUT_DIR }} \
+          ./build-wrapper-linux-x86/build-wrapper-linux-x86-64 --out-dir ${{ env.BUILD_WRAPPER_OUT_DIR }} \
             g++ -std=c++20 -Wall -Wextra -I include src/*.cpp -o cinema
+
+      - name: Compile and Run Tests with Coverage
+        run: |
+          # بناء ملف الاختبارات مع تفعيل التغطية
+          g++ -std=c++20 --coverage -I include src/*.cpp tests/*.cpp -o cinema_tests
+          ./cinema_tests
+          # إنشاء تقرير التغطية لـ Sonar
+          gcovr -r . --xml -o coverage.xml
 
       - name: Run SonarCloud analysis
         uses: SonarSource/sonarqube-scan-action@v4
@@ -34,6 +46,4 @@ jobs:
           args: >
             -Dsonar.projectKey=Ahmed-M-Elsayad_CinemaSystem
             -Dsonar.organization=ahmed-m-elsayad
-            -Dsonar.sources=src,include
-            -Dsonar.sourceEncoding=UTF-8
             -Dsonar.cfamily.compile-commands=${{ env.BUILD_WRAPPER_OUT_DIR }}/compile_commands.json
