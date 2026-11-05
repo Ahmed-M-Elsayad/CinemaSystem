@@ -38,6 +38,11 @@ git checkout -b bugfix/bug-name
 ```bash
 g++ -std=c++20 -Wall -Wextra -I include src/*.cpp -o cinema
 ```
+ثم شغّل الاختبارات وتأكد أنها كلها تنجح:
+```bash
+g++ -std=c++20 -Wall -Wextra -I include $(find src -name "*.cpp" ! -name "main.cpp") tests/*.cpp -o cinema_tests
+./cinema_tests
+```
 
 ### 6. رفع التعديلات (Commit & Push)
 ```bash
@@ -70,7 +75,8 @@ git push origin feature/feature-name
    *الاستثناء:* الدوال المساعدة المشتركة تُجمَّع في `fileUtils` و`bookingHelpers` و`sha256`. استخدمها بدل نسخ الكود (Code Duplication).
 7. **إدخال النصوص:** استخدم دالة `getStringInput` بدلاً من `getline` اليدوي، لأنها تمنع إدخال الرمز `|` (فاصل حقول ملفات البيانات) وتتعامل مع المدخلات الفارغة بأمان.
 8. **الأمان:** لا تكتب كلمات سر أو مفاتيح داخل الكود، ولا ترفع `data/admin.hash` إلى Git. (المشروع يستخدم متغير البيئة `CINEMA_ADMIN_PASSWORD` أو ملف الـ Hash المحلي.)
-9. **التحليل الساكن:** المشروع مربوط بـ **SonarCloud**. يجب ألا يقلل الـ PR من جودة الكود (Quality Gate) أو يضيف ثغرات.
+9. **الاختبارات:** أي دالة منطقية جديدة (حسابات، تحقق، معالجة نصوص) يجب أن تُضاف لها اختبارات في `tests/`. الـ Quality Gate يشترط تغطية **≥ 80%** على الكود الجديد.
+10. **التحليل الساكن:** المشروع مربوط بـ **SonarCloud**. يجب ألا يقلل الـ PR من جودة الكود (Quality Gate) أو يضيف ثغرات.
 
 ---
 

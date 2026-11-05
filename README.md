@@ -59,6 +59,7 @@ CinemaSystem/
 ├── include/
 │   └── CinemaData.h             # الـ Structs وتصريحات الدوال
 ├── src/                         # ملفات التنفيذ (.cpp)
+├── tests/                       # اختبارات الوحدة (Unit Tests)
 ├── data/                        # يُنشأ تلقائياً (قاعدة البيانات)
 ├── receipts/                    # يُنشأ تلقائياً (التذاكر)
 ├── FUNCTIONS_AGREEMENT.md       # عقد الدوال بين الفريق
@@ -129,6 +130,12 @@ g++ -std=c++20 -Wall -Wextra -I include src/*.cpp -o cinema
 cinema.exe        # Windows (CMD / PowerShell)
 ```
 
+### 3️⃣ تشغيل الاختبارات (Unit Tests)
+```bash
+g++ -std=c++20 -Wall -Wextra -I include $(find src -name "*.cpp" ! -name "main.cpp") tests/*.cpp -o cinema_tests
+./cinema_tests
+```
+
 ---
 
 ## 👥 أعضاء الفريق وتوزيع المهام
@@ -147,8 +154,9 @@ cinema.exe        # Windows (CMD / PowerShell)
 
 عند كل `push` على الفرع `main` أو عند فتح `Pull Request`، يتم تشغيل **GitHub Actions**:
 1. يتم بناء المشروع باستخدام `g++` مع `-Wall -Wextra`.
-2. يتم تشغيل تحليل ساكن (Static Analysis) عبر **SonarCloud**.
-3. يجب أن يمر الكود من **Quality Gate** (خلوه من الـ Bugs، الثغرات، وتقليل تكرار الكود) قبل قبول أي دمج.
+2. يتم تشغيل الاختبارات (`tests/`) مع قياس **تغطية الكود (Coverage)** عبر `gcovr`.
+3. يتم تشغيل تحليل ساكن (Static Analysis) عبر **SonarCloud** مع تقرير التغطية.
+4. يجب أن يمر الكود من **Quality Gate** (خلوه من الـ Bugs، الثغرات، وتقليل تكرار الكود) قبل قبول أي دمج.
 
 ---
 

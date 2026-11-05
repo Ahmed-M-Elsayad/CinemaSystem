@@ -1,11 +1,21 @@
 # Build outputs
 cinema
 cinema.exe
+cinema_tests
+cinema_tests.exe
 *.o
 *.obj
 *.out
 build/
 build_wrapper_output_directory/
+build-wrapper-linux-x86/
+build-wrapper-linux-x86.zip
+
+# Coverage
+coverage.xml
+*.gcda
+*.gcno
+*.gcov
 
 # Runtime data (never commit secrets!)
 data/admin.hash

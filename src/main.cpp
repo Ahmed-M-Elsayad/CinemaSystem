@@ -47,7 +47,6 @@ int main() {
         cout << "Enter your choice: ";
 
         const int choice = getIntInput(1, 3);
-        // التعديل هنا: تم مسح سطر cin.ignore غير الضروري
 
         if (choice == 1) {
             clearScreen();
@@ -58,17 +57,33 @@ int main() {
             cout << "4. Back to Main Menu\n";
             cout << "Enter your choice: ";
 
-            int custChoice = getIntInput(1, 4);
+            const int custChoice = getIntInput(1, 4);
 
-            if (custChoice == 1) createBooking(movies, bookings);
-            else if (custChoice == 2) modifyBooking(bookings, movies);
-            else if (custChoice == 3) cancelBooking(bookings, movies);
+            // الرجوع للقائمة الرئيسية مباشرة بدون طلب Enter إضافي
+            if (custChoice == 4) {
+                continue;
+            }
+
+            if (custChoice == 1) {
+                createBooking(movies, bookings);
+            }
+            else if (custChoice == 2) {
+                modifyBooking(bookings, movies);
+            }
+            else {
+                cancelBooking(bookings, movies);
+            }
+
+            // حفظ فوري بعد كل عملية لتفادي ضياع البيانات عند إغلاق البرنامج بشكل مفاجئ
+            saveAllData(halls, movies, bookings);
         }
         else if (choice == 2) {
             clearScreen();
             cout << "\nAdmin Mode selected.\n";
             if (adminLogin()) {
                 showAdminMenu(movies, halls, bookings);
+                // حفظ فوري بعد الخروج من قائمة المدير
+                saveAllData(halls, movies, bookings);
             }
             else {
                 cout << "Access denied. Returning to main menu.\n";

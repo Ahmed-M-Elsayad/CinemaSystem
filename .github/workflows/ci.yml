@@ -6,17 +6,22 @@ on:
   pull_request:
     types: [opened, synchronize, reopened]
 
+permissions:
+  contents: read
+  pull-requests: read
+
 jobs:
   build:
     name: Build and Analyze
     runs-on: ubuntu-latest
     env:
       BUILD_WRAPPER_OUT_DIR: build_wrapper_output_directory
+      SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
     steps:
       - name: Checkout
         uses: actions/checkout@v4
         with:
-          fetch-depth: 0
+          fetch-depth: 0   # required by SonarCloud for accurate blame info
 
       - name: Install dependencies (gcovr & Build Wrapper)
         run: |
@@ -30,20 +35,23 @@ jobs:
           ./build-wrapper-linux-x86/build-wrapper-linux-x86-64 --out-dir ${{ env.BUILD_WRAPPER_OUT_DIR }} \
             g++ -std=c++20 -Wall -Wextra -I include src/*.cpp -o cinema
 
-      - name: Compile and Run Tests with Coverage
+      - name: Compile and run tests with coverage
         run: |
-          # بناء ملف الاختبارات مع تفعيل التغطية (باستثناء main.cpp لتجنب تعارض الـ main)
-          g++ -std=c++20 --coverage -I include $(find src -name "*.cpp" ! -name "main.cpp") tests/*.cpp -o cinema_tests
+          # main.cpp مستثنى لتجنب تعارض دالة main مع ملف الاختبارات
+          g++ -std=c++20 -Wall -Wextra --coverage -I include \
+            $(find src -name "*.cpp" ! -name "main.cpp") tests/*.cpp -o cinema_tests
           ./cinema_tests
-          # إنشاء تقرير التغطية لـ Sonar
-          gcovr -r . --xml -o coverage.xml
+
+          # تقرير التغطية بصيغة SonarQube (لكود src/ فقط)
+          gcovr -r . --filter 'src/' --sonarqube coverage.xml
+
+          # ملخص التغطية في الـ Logs
+          gcovr -r . --filter 'src/'
 
       - name: Run SonarCloud analysis
+        # يتخطى الخطوة لو التوكن غير متاح (مثل PR قادم من Fork)
+        if: ${{ env.SONAR_TOKEN != '' }}
         uses: SonarSource/sonarqube-scan-action@v4
-        env:
-          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
         with:
           args: >
-            -Dsonar.projectKey=Ahmed-M-Elsayad_CinemaSystem
-            -Dsonar.organization=ahmed-m-elsayad
             -Dsonar.cfamily.compile-commands=${{ env.BUILD_WRAPPER_OUT_DIR }}/compile_commands.json
