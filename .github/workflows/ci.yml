@@ -32,8 +32,8 @@ jobs:
 
       - name: Compile and Run Tests with Coverage
         run: |
-          # بناء ملف الاختبارات مع تفعيل التغطية
-          g++ -std=c++20 --coverage -I include src/*.cpp tests/*.cpp -o cinema_tests
+          # بناء ملف الاختبارات مع تفعيل التغطية (باستثناء main.cpp لتجنب تعارض الـ main)
+          g++ -std=c++20 --coverage -I include $(find src -name "*.cpp" ! -name "main.cpp") tests/*.cpp -o cinema_tests
           ./cinema_tests
           # إنشاء تقرير التغطية لـ Sonar
           gcovr -r . --xml -o coverage.xml
